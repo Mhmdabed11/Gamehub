@@ -8,6 +8,12 @@ export default new Vuex.Store({
     j: "",
     i1: "",
     j1: "",
+    i2: "",
+    j2: "",
+    i3: "",
+    j3: "",
+    i4: "",
+    j4: "",
     previ: "",
     prevj: "",
     color: ""
@@ -24,6 +30,24 @@ export default new Vuex.Store({
     },
     getj1(state) {
       return state.j1;
+    },
+    geti2(state) {
+      return state.i2;
+    },
+    getj2(state) {
+      return state.j2;
+    },
+    geti3(state) {
+      return state.i3;
+    },
+    getj3(state) {
+      return state.j3;
+    },
+    geti4(state) {
+      return state.i4;
+    },
+    getj4(state) {
+      return state.j4;
     },
     getprevi(state) {
       return state.previ;
@@ -47,6 +71,24 @@ export default new Vuex.Store({
     },
     setj1(state, payload) {
       state.j1 = payload;
+    },
+    seti2(state, payload) {
+      state.i2 = payload;
+    },
+    setj2(state, payload) {
+      state.j2 = payload;
+    },
+    seti3(state, payload) {
+      state.i3 = payload;
+    },
+    setj3(state, payload) {
+      state.j3 = payload;
+    },
+    seti4(state, payload) {
+      state.i4 = payload;
+    },
+    setj4(state, payload) {
+      state.j4 = payload;
     },
     setprevi(state, payload) {
       state.previ = payload;
