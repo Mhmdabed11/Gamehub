@@ -11,22 +11,43 @@ module.exports = {
         }).then((body) => {
             if(body.rows.length > 0){
                 req.user = body.rows[0].doc;
+                req.userFound = true;
                 return next();
             } else {
-                return next(new errors.NotFoundError("User not found!"));
+                req.userFound = false;
+                return next();
             }
         });
     },
 
     checkCorrectPassword: function(req, res, next){
-        var password = req.body.password;
-        if(req.user.password == password){
-            res.send({username: req.user.username});
-            return next();
+        if(req.userFound){
+            var password = req.body.password;
+            if(req.user.password == password){
+                res.send({username: req.user.username});
+                return next();
+            } else {
+                return next(new errors.UnauthorizedError("Incorrect username or password."));
+            }
         } else {
-            return next(new errors.UnauthorizedError("Incorrect username or password."));
+            return next(new errors.NotFoundError("User not found!"));
         }
+    },
 
+    addUser: function(req, res, next){
+        if(req.userFound){
+            return next(new errors.ConflictError("User already exists!"));
+        } else {
+            var newUser = {
+                username: req.body.username,
+                password: req.body.password
+            };
+            
+            nano.insert(newUser).then((response) => {
+                res.send(response);
+                return next();
+            })
+        }
 
     }
 
