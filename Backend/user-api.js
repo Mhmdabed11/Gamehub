@@ -40,7 +40,8 @@ module.exports = {
         } else {
             var newUser = {
                 username: req.body.username,
-                password: req.body.password
+                password: req.body.password,
+                type: "user"
             };
             
             nano.insert(newUser).then((response) => {
