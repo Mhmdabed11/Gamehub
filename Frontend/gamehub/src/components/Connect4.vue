@@ -250,7 +250,7 @@ h1 {
 }
 
 .newgame {
-    margin-left: 25%;
+    margin-left: -5%;
     margin-top: 2%;
     background-color:blue;
     color: white;
