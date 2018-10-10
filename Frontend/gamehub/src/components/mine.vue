@@ -35,12 +35,6 @@
  var that;
  var inter;
 
- document.addEventListener("keydown", myFunction);
- function myFunction(){
-     if (event.keyCode==32){
-         that.defs();
-     }
- }
 export default {
 
 
