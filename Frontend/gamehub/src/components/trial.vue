@@ -29,7 +29,7 @@ export default {
       retrieveScoresByUsername(){
             var scope = this;
             var xreq = new XMLHttpRequest();
-            var username = "";
+            var username = "/soosoo";
             var url = 'http://127.0.0.1:8888/getScoresByUsername'+username;
             xreq.open("GET", url, true);
             xreq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -39,13 +39,13 @@ export default {
                 if(xreq.readyState == 4 && xreq.status == 200) {
                     // alert(xreq.responseText);
                     var body = JSON.parse(xreq.responseText);
-                    scope.displayUserScores();    
+                    scope.displayUserScores(body);    
                 }
             }
             
       },
       displayUserScores(body){
-
+          console.log(body);
       },
 
   },
