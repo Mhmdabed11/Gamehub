@@ -1,5 +1,6 @@
 <template>
 <div>
+  <h1 class="turn">{{msg}}'s Turn</h1>
     <div class="grid">
         <div class="grid-items" v-for="i in 64"  v-on:click="alertme($event,Math.floor((i-1)/8),(i-1)-(8*(Math.floor((i-1)/8))))" v-bind:key=i><div  :class="{unit: isactive}"></div></div>
     </div>
@@ -32,10 +33,43 @@ export default {
       rightdiagonal2updama: false,
       leftdiagonal2downdama: false,
       rightdiagonal2downdama: false,
-      selectedarray: []
+      selectedarray: [],
+      redturn: true,
+      blackturn: true,
+      msg: "Red"
     };
   },
   methods: {
+    checkred() {
+      var isred = false;
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          if (
+            this.matrix[i][j].children[0].classList.contains("red") ||
+            this.matrix[i][j].children[0].classList.contains("damared")
+          ) {
+            isred = true;
+            break;
+          }
+        }
+      }
+      return isred;
+    },
+    checkblack() {
+      var isblack = false;
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          if (
+            this.matrix[i][j].children[0].classList.contains("black") ||
+            this.matrix[i][j].children[0].classList.contains("damablack")
+          ) {
+            isblack = true;
+            break;
+          }
+        }
+      }
+      return isblack;
+    },
     checkuprightred(itr, itr3, color, eaten) {
       if (this.matrix[itr - 1] && this.matrix[itr - 1][itr3 + 1]) {
         if (
@@ -208,7 +242,9 @@ export default {
               "damared") &&
           this.matrix[itr + 2][itr3 + 2].children[0].classList[1] != color &&
           this.matrix[itr + 2][itr3 + 2].children[0].classList[1] != eaten &&
-          this.matrix[itr + 2][itr3 + 2].children[0].classList[1] != "damablack"
+          this.matrix[itr + 2][itr3 + 2].children[0].classList[1] !=
+            "damablack" &&
+          this.matrix[itr + 2][itr3 + 2].children[0].classList[1] != "damared"
         ) {
           this.matrix[itr + 2][itr3 + 2].classList.add("highlighted");
           this.selectedarray.push(this.matrix[itr + 2][itr3 + 2]);
@@ -244,7 +280,9 @@ export default {
               "damablack") &&
           this.matrix[itr - 2][itr3 - 2].children[0].classList[1] != eaten &&
           this.matrix[itr - 2][itr3 - 2].children[0].classList[1] != color &&
-          this.matrix[itr - 2][itr3 - 2].children[0].classList[1] != "damared"
+          this.matrix[itr - 2][itr3 - 2].children[0].classList[1] !=
+            "damared" &&
+          this.matrix[itr - 2][itr3 - 2].children[0].classList[1] != "damablack"
         ) {
           this.matrix[itr - 2][itr3 - 2].classList.add("highlighted");
           this.selectedarray.push(this.matrix[itr - 2][itr3 - 2]);
@@ -584,10 +622,16 @@ export default {
     },
 
     alertme(e, itr, itr3) {
+      if (this.matrix[itr][itr3].classList.contains("highlighted") == false) {
+        for (let i in this.selectedarray) {
+          this.selectedarray[i].classList.remove("highlighted");
+        }
+      }
       if (
         this.matrix[itr][itr3].children[0].classList[1] == "red" &&
         this.matrix[itr][itr3].children[0].classList[2] != "damared" &&
-        this.matrix[itr][itr3].children[0].classList[2] != "damablack"
+        this.matrix[itr][itr3].children[0].classList[2] != "damablack" &&
+        this.redturn == true
       ) {
         var color = "red";
         var eaten = "black";
@@ -644,7 +688,8 @@ export default {
       if (
         this.matrix[itr][itr3].children[0].classList[1] == "black" &&
         this.matrix[itr][itr3].children[0].classList[2] != "damared" &&
-        this.matrix[itr][itr3].children[0].classList[2] != "damablack"
+        this.matrix[itr][itr3].children[0].classList[2] != "damablack" &&
+        this.blackturn == true
       ) {
         var color = "black";
         var eaten = "red";
@@ -691,7 +736,10 @@ export default {
       //!black
 
       //!damared
-      if (this.matrix[itr][itr3].children[0].classList[1] == "damared") {
+      if (
+        this.matrix[itr][itr3].children[0].classList[1] == "damared" &&
+        this.redturn == true
+      ) {
         this.matrix[itr][itr3].children[0].remove["red"];
 
         var eaten = "black";
@@ -745,7 +793,10 @@ export default {
       //!damared
 
       //!damablack
-      if (this.matrix[itr][itr3].children[0].classList[1] == "damablack") {
+      if (
+        this.matrix[itr][itr3].children[0].classList[1] == "damablack" &&
+        this.blackturn == true
+      ) {
         this.matrix[itr][itr3].children[0].remove["black"];
 
         var eaten = "red";
@@ -1069,6 +1120,33 @@ export default {
             (this.leftdiagonal2downdama = false),
             (this.rightdiagonal2downdama = false);
         }
+        if (this.redturn == true) {
+          this.redturn = false;
+          this.blackturn = true;
+          this.msg = "Black";
+        } else if (this.blackturn == true) {
+          this.redturn = true;
+          this.blackturn = false;
+          this.msg = "Red";
+        }
+      }
+      this.checkred();
+      if (this.checkred() == false) {
+        alert("Game over, Red player loses!");
+        for (let i = 0; i < 8; i++) {
+          for (let j = 0; j < 8; j++) {
+            this.matrix[i][j].classList.add("unclickable");
+          }
+        }
+      }
+      this.checkblack();
+      if (this.checkblack() == false) {
+        alert("Game over, Black player loses!");
+        for (let i = 0; i < 8; i++) {
+          for (let j = 0; j < 8; j++) {
+            this.matrix[i][j].classList.add("unclickable");
+          }
+        }
       }
     }
   },
@@ -1142,6 +1220,9 @@ export default {
   top: 50%;
   justify-items: center;
 }
+.unclickable {
+  pointer-events: none;
+}
 .grid > div {
   display: flex;
   width: 100%;
@@ -1186,5 +1267,10 @@ export default {
 }
 .damablack {
   background: blue;
+}
+.turn {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
 }
 </style>
