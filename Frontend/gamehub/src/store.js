@@ -102,22 +102,35 @@ export default new Vuex.Store({
       state.color = payload
     },
     saveScore(state, payload) {
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", `http://localhost:8888/saveScore`, true);
-      var data = "username=" + payload.username + '&game=' + payload.game + '&score=' + payload.score;
-      //Send the proper header information along with the request
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      // var xhr = new XMLHttpRequest();
+      // xhr.open("POST", `http://localhost:8888/saveScore`, true);
+      // var data = "username=" + payload.username + '&game=' + payload.game + '&score=' + payload.score;
+      // //Send the proper header information along with the request
+      // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-      xhr.onreadystatechange = function () {
-        //Call a function when the state changes.
-        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-          alert(xhr.responseText);
-        }
-      };
-      xhr.send(data);
-      // axios.post('http://127.0.0.1:8888/saveScore', {
-      //   username: payload
-      // })
+      // xhr.onreadystatechange = function () {
+      //   //Call a function when the state changes.
+      //   if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+      //     alert(xhr.responseText);
+      //   }
+      // };
+      // xhr.send(data);
+      axios({
+        method: 'post',
+        url: 'http://localhost:8888/saveScore',
+        data: {
+          username: payload.username,
+          game: payload.game,
+          score: payload.score
+        },
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
 
 
