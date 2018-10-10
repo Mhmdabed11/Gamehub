@@ -590,5 +590,5 @@ export default {
 		left: 280px;
 	}
 }
-
+.boxed{margin-top:250px;margin-bottom:20px;}
 </style>
