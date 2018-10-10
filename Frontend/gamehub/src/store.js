@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 
 Vue.use(Vuex);
 export default new Vuex.Store({
+
   state: {
     i: "",
     j: "",
@@ -98,8 +100,28 @@ export default new Vuex.Store({
     },
     setcolor(state, payload) {
       state.color = payload
+    },
+    saveScore(state, payload) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", `http://localhost:8888/saveScore`, true);
+      var data = "username=" + payload.username + '&game=' + payload.game + '&score=' + payload.score;
+      //Send the proper header information along with the request
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      xhr.onreadystatechange = function () {
+        //Call a function when the state changes.
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+          alert(xhr.responseText);
+        }
+      };
+      xhr.send(data);
+      // axios.post('http://127.0.0.1:8888/saveScore', {
+      //   username: payload
+      // })
     }
 
-  }
+
+  },
+
 
 });
