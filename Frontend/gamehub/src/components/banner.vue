@@ -5,6 +5,7 @@
     <div class="dropmenu"><img src="../assets/menu_icon.svg">
         <div class="menu">
     <button v-on:click="twozero" class="dropbutton"> 2048 </button>
+    <button v-on:click="hangman" class="dropbutton"> hangman </button>
     <button v-on:click="checkers" class="dropbutton"> Checkers </button>
 
     <button v-on:click="connect" class="dropbutton"> Connect 4 </button>
@@ -19,6 +20,7 @@
     </div>
     
     <button v-on:click="twozero" class="menubutton"> 2048 </button>
+        <button v-on:click="hangman" class="menubutton"> hangman </button>
     <button v-on:click="checkers" class="menubutton"> Checkers </button>
 
     <button v-on:click="connect" class="menubutton"> Connect 4 </button>
@@ -51,6 +53,10 @@
 methods:{
     twozero:function(){
 this.$router.push("/twenty48")
+
+    },
+    hangman:function(){
+this.$router.push("/hangman")
 
     },
      reversi:function(){

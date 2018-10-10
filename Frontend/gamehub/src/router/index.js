@@ -7,6 +7,7 @@ import checkers from '@/components/checkers'
 import sudoku from '@/components/Sudoku'
 import twenty from '@/components/twenty48'
 import connect from '@/components/connect4'
+import hangman from '@/components/hangman'
 import trial from '@/components/trial'
 import trial2 from '@/components/trial2'
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/LoginForm',
       name: 'LoginForm',
       component: LoginForm
+    },
+    {
+      path: '/hangman',
+      name: 'hangman',
+      component: hangman
     },
     {
       path: '/minesweeper',
