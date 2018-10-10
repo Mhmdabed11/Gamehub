@@ -35,7 +35,7 @@ export default {
       rightdiagonal2downdama: false,
       selectedarray: [],
       redturn: true,
-      blackturn: true,
+      blackturn: false,
       msg: "Red"
     };
   },

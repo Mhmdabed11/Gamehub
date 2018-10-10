@@ -30,9 +30,9 @@ export default {
     return {
 
     	msg: 'Welcome to Your Sudoku Game',
-    	g1 : [  [0,0,0,0,7,8,5,0,9], [0,1,0,3,0,5,4,0,6], [0,5,6,1,9,0,0,0,2], 
-              [7,0,0,0,2,3,0,0,0], [8,0,0,0,0,0,0,0,2], [0,0,0,9,6,0,0,0,3],
-              [3,0,0,0,6,4,9,5,0], [9,0,4,1,0,3,0,6,0], [6,0,7,5,8,0,0,0,0]
+    	g1 : [  [0,0,0,0,1,0,0,5,6], [0,7,8,3,0,5,1,9,0], [5,0,9,4,0,6,0,0,2], 
+              [7,0,0,8,0,0,0,0,0], [0,2,3,0,0,0,9,6,0], [0,0,0,0,0,2,0,0,3],
+              [3,0,0,9,0,4,6,0,7], [0,6,4,1,0,3,5,8,0], [9,5,0,0,6,0,0,0,0]
           ],
 		solved : [  [4,3,2,7,1,9,8,5,6], [6,7,8,3,2,5,1,9,4], [5,1,9,4,8,6,3,7,2], 
                   [7,9,6,8,3,1,2,4,5], [1,2,3,5,4,7,9,6,8], [8,4,5,6,9,2,7,1,3],
@@ -94,10 +94,10 @@ export default {
 	newGame(){
 		for(var i = 1; i<=9; i++){
         	for(var j = 1; j<=9; j++){
-            	if(this.solved[i-1][j-1]==0){
+            	if(this.g1[i-1][j-1]==0){
                 	document.getElementById("box"+i+""+j).innerHTML = '';
             	}else{
-                	document.getElementById("box"+i+""+j).innerHTML = this.solved[i-1][j-1];
+                	document.getElementById("box"+i+""+j).innerHTML = this.g1[i-1][j-1];
             	}
           	}
     	}
@@ -254,10 +254,10 @@ export default {
   mounted: function(){
     for(var i = 1; i<=9; i++){
         for(var j = 1; j<=9; j++){
-            if(this.solved[i-1][j-1]==0){
+            if(this.g1[i-1][j-1]==0){
                 document.getElementById("box"+i+""+j).innerHTML = '';
             }else{
-                document.getElementById("box"+i+""+j).innerHTML = this.solved[i-1][j-1];
+                document.getElementById("box"+i+""+j).innerHTML = this.g1[i-1][j-1];
             }
               
         }

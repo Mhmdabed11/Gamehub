@@ -7,6 +7,8 @@ import checkers from '@/components/checkers'
 import sudoku from '@/components/Sudoku'
 import twenty from '@/components/twenty48'
 import connect from '@/components/connect4'
+import trial from '@/components/trial'
+import trial2 from '@/components/trial2'
 
 Vue.use(Router)
 
@@ -47,5 +49,15 @@ export default new Router({
       name: 'twenty48',
       component: twenty
     },
+    {
+      path: '/trial',
+      name: 'trial',
+      component: trial
+    },
+    {
+      path: '/trial2',
+      name: 'trail2',
+      component: trial2
+    }
   ]
 })
