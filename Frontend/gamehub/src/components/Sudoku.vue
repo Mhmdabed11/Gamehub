@@ -291,15 +291,16 @@ export default {
 
 .boxed{
 	display: block;
-	position: absolute;
+	
 	text-align: center;
- 	
+ 	position: absolute;
 	background: -webkit-linear-gradient(to right, #FFAF7B, #D76D77); 
 	background: linear-gradient(to right, #FFAF7B, #D76D77);
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
 .header{
 	display:block;
 	z-index : 1;
