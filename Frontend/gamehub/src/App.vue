@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <banner></banner>
     <router-view/>
   </div>
 </template>
 
 <script>
+import banner from '@/components/banner'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    banner
+    
+  }
 }
 </script>
 
