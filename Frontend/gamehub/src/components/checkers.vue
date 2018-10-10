@@ -173,7 +173,9 @@ export default {
         if (
           this.matrix[itr + 1][itr3 - 1].children[0].classList[1] != eaten &&
           this.matrix[itr + 1][itr3 - 1].children[0].classList[1] != color &&
-          this.matrix[itr + 1][itr3 - 1].children[0].classList[1] != "damablack"
+          this.matrix[itr + 1][itr3 - 1].children[0].classList[1] !=
+            "damablack" &&
+          this.matrix[itr + 1][itr3 - 1].children[0].classList[1] != "damabred"
         ) {
           this.matrix[itr + 1][itr3 - 1].classList.add("highlighted");
           this.selectedarray.push(this.matrix[itr + 1][itr3 - 1]);
@@ -414,9 +416,14 @@ export default {
     checkdownleftby2black(itr, itr3, color, eaten) {
       if (this.matrix[itr + 2] && this.matrix[itr + 2][itr3 - 2]) {
         if (
-          this.matrix[itr + 1][itr3 - 1].children[0].classList[1] == eaten &&
+          (this.matrix[itr + 1][itr3 - 1].children[0].classList[1] == "red" ||
+            this.matrix[itr + 1][itr3 - 1].children[0].classList[1] ==
+              "damared") &&
           this.matrix[itr + 2][itr3 - 2].children[0].classList[1] != color &&
-          this.matrix[itr + 2][itr3 - 2].children[0].classList[1] != eaten
+          this.matrix[itr + 2][itr3 - 2].children[0].classList[1] != eaten &&
+          this.matrix[itr + 2][itr3 - 2].children[0].classList[1] !=
+            "damared" &&
+          this.matrix[itr + 2][itr3 - 2].children[0].classList[1] != "damablack"
         ) {
           this.matrix[itr + 2][itr3 - 2].classList.add("highlighted");
           this.selectedarray.push(this.matrix[itr + 2][itr3 - 2]);
@@ -622,6 +629,7 @@ export default {
     },
 
     alertme(e, itr, itr3) {
+      console.log(itr, itr3);
       if (this.matrix[itr][itr3].classList.contains("highlighted") == false) {
         for (let i in this.selectedarray) {
           this.selectedarray[i].classList.remove("highlighted");
@@ -893,233 +901,230 @@ export default {
     },
     move(e, itr, itr1) {
       if (e.target.classList[2] == "highlighted") {
+        if (e.target.children[0].classList[1] == "black") {
+          e.target.children[0].classList.remove("black");
+        }
+        if (e.target.children[0].classList[1] == "red") {
+          e.target.children[0].classList.remove("red");
+        }
+        if (e.target.children[0].classList[1] == "damared") {
+          e.target.children[0].classList.remove("damared");
+        }
+        if (e.target.children[0].classList[1] == "damablack") {
+          e.target.children[0].classList.remove("damablack");
+        }
+        if (this.$store.getters.getcolor == "red") {
+          e.target.children[0].classList.add("red");
+          this.matrix[itr][itr1].children[0].classList.remove("red");
+        } else if (this.$store.getters.getcolor == "black") {
+          e.target.children[0].classList.add("black");
+          this.matrix[itr][itr1].children[0].classList.remove("black");
+        } else if (this.$store.getters.getcolor == "damared") {
+          e.target.children[0].classList.add("damared");
+          this.matrix[itr][itr1].children[0].classList.remove("damared");
+        } else if (this.$store.getters.getcolor == "damablack") {
+          e.target.children[0].classList.add("damablack");
+          this.matrix[itr][itr1].children[0].classList.remove("damablack");
+        }
         for (let j = 0; j < 8; j++) {
           if (e.target == this.matrix[0][j]) {
-            if (!e.target.children[0].classList.contains("damablack")) {
+            if (
+              !this.matrix[0][j].children[0].classList.contains("damablack")
+            ) {
               e.target.children[0].classList.add("damared");
-              e.target.children[0].classList.remove("red");
+              this.matrix[0][j].children[0].classList.remove("red");
             }
-
             break;
-          }
-          if (e.target == this.matrix[7][j]) {
-            if (!e.target.children[0].classList.contains("damared")) {
+          } else if (e.target == this.matrix[7][j]) {
+            if (!this.matrix[7][j].children[0].classList.contains("damared")) {
               e.target.children[0].classList.add("damablack");
-              e.target.children[0].classList.remove("black");
+              this.matrix[7][j].children[0].classList.remove("black");
             }
-
             break;
           }
-          if (e.target.children[0].classList[1] == "black") {
-            e.target.children[0].classList.remove("black");
-          }
-          if (e.target.children[0].classList[1] == "red") {
-            e.target.children[0].classList.remove("red");
-          }
-          if (e.target.children[0].classList[1] == "damared") {
-            e.target.children[0].classList.remove("damared");
-          }
-          if (e.target.children[0].classList[1] == "damablack") {
-            e.target.children[0].classList.remove("damablack");
-          }
-          if (this.$store.getters.getcolor == "red") {
-            e.target.children[0].classList.add("red");
-            this.matrix[itr][itr1].children[0].classList.remove("red");
-          } else if (this.$store.getters.getcolor == "black") {
-            e.target.children[0].classList.add("black");
-            this.matrix[itr][itr1].children[0].classList.remove("black");
-          } else if (this.$store.getters.getcolor == "damared") {
-            e.target.children[0].classList.add("damared");
-            this.matrix[itr][itr1].children[0].classList.remove("damared");
-          } else if (this.$store.getters.getcolor == "damablack") {
-            e.target.children[0].classList.add("damablack");
-            this.matrix[itr][itr1].children[0].classList.remove("damablack");
-          }
-
-          if (
-            this.$store.getters.geti != "" ||
-            this.$store.getters.getj != ""
-          ) {
-            this.matrix[this.$store.getters.geti][
-              this.$store.getters.getj
-            ].classList.remove("highlighted");
-          }
-          if (
-            this.$store.getters.geti2 != "" ||
-            this.$store.getters.getj2 != ""
-          ) {
-            this.matrix[this.$store.getters.geti2][
-              this.$store.getters.getj2
-            ].classList.remove("highlighted");
-          }
-          if (
-            this.$store.getters.geti3 != "" &&
-            this.$store.getters.getj3 != ""
-          ) {
-            this.matrix[this.$store.getters.geti3][
-              this.$store.getters.getj3
-            ].classList.remove("highlighted");
-          }
-          if (
-            this.$store.getters.geti1 != "" ||
-            this.$store.getters.getj1 != ""
-          ) {
-            this.matrix[this.$store.getters.geti1][
-              this.$store.getters.getj1
-            ].classList.remove("highlighted");
-          }
-          for (let i in this.selectedarray) {
-            this.selectedarray[i].classList.remove("highlighted");
-          }
-          if (
-            this.$store.getters.geti4 != "" &&
-            this.$store.getters.getj4 != ""
-          ) {
-            this.matrix[this.$store.getters.geti4][
-              this.$store.getters.getj4
-            ].classList.remove("highlighted");
-          }
-
-          this.replacedama1("black", e, itr, itr1, "red", "damared");
-          this.replacedama1("red", e, itr, itr1, "black", "damablack");
-
-          if (this.leftdiagonalred == true) {
-            if (this.matrix[itr - 2] && this.matrix[itr - 2][itr1 - 2]) {
-              if (e.target == this.matrix[itr - 2][itr1 - 2]) {
-                this.matrix[itr - 1][itr1 - 1].children[0].classList.remove(
-                  "black"
-                );
-                this.matrix[itr - 1][itr1 - 1].children[0].classList.remove(
-                  "damablack"
-                );
-              }
-            }
-          }
-          if (this.rightdiagonalred == true) {
-            if (this.matrix[itr - 2] && this.matrix[itr - 2][itr1 + 2]) {
-              if (e.target == this.matrix[itr - 2][itr1 + 2]) {
-                this.matrix[itr - 1][itr1 + 1].children[0].classList.remove(
-                  "black"
-                );
-                this.matrix[itr - 1][itr1 + 1].children[0].classList.remove(
-                  "damablack"
-                );
-              }
-            }
-          }
-          if (this.leftdiagonalblack == true) {
-            if (this.matrix[itr + 2] && this.matrix[itr + 2][itr1 - 2]) {
-              if (e.target == this.matrix[itr + 2][itr1 - 2]) {
-                this.matrix[itr + 1][itr1 - 1].children[0].classList.remove(
-                  "red"
-                );
-                this.matrix[itr + 1][itr1 - 1].children[0].classList.remove(
-                  "damared"
-                );
-              }
-            }
-          }
-          if (this.rightdiagonalblack == true) {
-            if (this.matrix[itr + 2] && this.matrix[itr + 2][itr1 + 2]) {
-              if (e.target == this.matrix[itr + 2][itr1 + 2]) {
-                this.matrix[itr + 1][itr1 + 1].children[0].classList.remove(
-                  "red"
-                );
-                this.matrix[itr + 1][itr1 + 1].children[0].classList.remove(
-                  "damared"
-                );
-              }
-            }
-          }
-          if (this.leftdiagonal2red == true) {
-            if (this.matrix[itr - 4] && this.matrix[itr - 4][itr1 - 4]) {
-              if (e.target == this.matrix[itr - 4][itr1 - 4]) {
-                this.matrix[itr - 3][itr1 - 3].children[0].classList.remove(
-                  "black"
-                );
-                this.matrix[itr - 1][itr1 - 1].children[0].classList.remove(
-                  "black"
-                );
-                this.matrix[itr - 3][itr1 - 3].children[0].classList.remove(
-                  "damablack"
-                );
-                this.matrix[itr - 1][itr1 - 1].children[0].classList.remove(
-                  "damablack"
-                );
-              }
-            }
-          }
-          if (this.leftdiagonal2black == true) {
-            if (this.matrix[itr + 4] && this.matrix[itr + 4][itr1 - 4]) {
-              if (e.target == this.matrix[itr + 4][itr1 - 4]) {
-                this.matrix[itr + 3][itr1 - 3].children[0].classList.remove(
-                  "red"
-                );
-                this.matrix[itr + 1][itr1 - 1].children[0].classList.remove(
-                  "red"
-                );
-                this.matrix[itr + 3][itr1 - 3].children[0].classList.remove(
-                  "damared"
-                );
-                this.matrix[itr + 1][itr1 - 1].children[0].classList.remove(
-                  "damared"
-                );
-              }
-            }
-          }
-          if (this.rightdiagonal2red == true) {
-            if (this.matrix[itr - 4] && this.matrix[itr - 4][itr1 + 4]) {
-              if (e.target == this.matrix[itr - 4][itr1 + 4]) {
-                this.matrix[itr - 3][itr1 + 3].children[0].classList.remove(
-                  "black"
-                );
-                this.matrix[itr - 1][itr1 + 1].children[0].classList.remove(
-                  "black"
-                );
-                this.matrix[itr - 3][itr1 + 3].children[0].classList.remove(
-                  "damablack"
-                );
-                this.matrix[itr - 1][itr1 + 1].children[0].classList.remove(
-                  "damablack"
-                );
-              }
-            }
-          }
-          if (this.rightdiagonal2black == true) {
-            if (this.matrix[itr + 4] && this.matrix[itr + 4][itr1 + 4]) {
-              if (e.target == this.matrix[itr + 4][itr1 + 4]) {
-                this.matrix[itr + 3][itr1 + 3].children[0].classList.remove(
-                  "red"
-                );
-                this.matrix[itr + 3][itr1 + 3].children[0].classList.remove(
-                  "damared"
-                );
-                this.matrix[itr + 1][itr1 + 1].children[0].classList.remove(
-                  "red"
-                );
-                this.matrix[itr + 1][itr1 + 1].children[0].classList.remove(
-                  "damared"
-                );
-              }
-            }
-          }
-          this.leftdiagonalred = false;
-          this.rightdiagonalred = false;
-          this.leftdiagonalblack = false;
-          this.rightdiagonalblack = false;
-          this.leftdiagonal2red = false;
-          this.rightdiagonal2red = false;
-          this.leftdiagonal2black = false;
-          this.rightdiagonalblack = false;
-          (this.leftdiagonalupdama = false),
-            (this.rightdiagonalupdama = false),
-            (this.leftdiagonaldowndama = false),
-            (this.rightdiagonaldowndama = false),
-            (this.leftdiagonal2updama = false),
-            (this.rightdiagonal2updama = false),
-            (this.leftdiagonal2downdama = false),
-            (this.rightdiagonal2downdama = false);
         }
+
+        if (this.$store.getters.geti != "" || this.$store.getters.getj != "") {
+          this.matrix[this.$store.getters.geti][
+            this.$store.getters.getj
+          ].classList.remove("highlighted");
+        }
+        if (
+          this.$store.getters.geti2 != "" ||
+          this.$store.getters.getj2 != ""
+        ) {
+          this.matrix[this.$store.getters.geti2][
+            this.$store.getters.getj2
+          ].classList.remove("highlighted");
+        }
+        if (
+          this.$store.getters.geti3 != "" &&
+          this.$store.getters.getj3 != ""
+        ) {
+          this.matrix[this.$store.getters.geti3][
+            this.$store.getters.getj3
+          ].classList.remove("highlighted");
+        }
+        if (
+          this.$store.getters.geti1 != "" ||
+          this.$store.getters.getj1 != ""
+        ) {
+          this.matrix[this.$store.getters.geti1][
+            this.$store.getters.getj1
+          ].classList.remove("highlighted");
+        }
+        for (let i in this.selectedarray) {
+          this.selectedarray[i].classList.remove("highlighted");
+        }
+        if (
+          this.$store.getters.geti4 != "" &&
+          this.$store.getters.getj4 != ""
+        ) {
+          this.matrix[this.$store.getters.geti4][
+            this.$store.getters.getj4
+          ].classList.remove("highlighted");
+        }
+
+        this.replacedama1("black", e, itr, itr1, "red", "damared");
+        this.replacedama1("red", e, itr, itr1, "black", "damablack");
+
+        if (this.leftdiagonalred == true) {
+          if (this.matrix[itr - 2] && this.matrix[itr - 2][itr1 - 2]) {
+            if (e.target == this.matrix[itr - 2][itr1 - 2]) {
+              this.matrix[itr - 1][itr1 - 1].children[0].classList.remove(
+                "black"
+              );
+              this.matrix[itr - 1][itr1 - 1].children[0].classList.remove(
+                "damablack"
+              );
+            }
+          }
+        }
+        if (this.rightdiagonalred == true) {
+          if (this.matrix[itr - 2] && this.matrix[itr - 2][itr1 + 2]) {
+            if (e.target == this.matrix[itr - 2][itr1 + 2]) {
+              this.matrix[itr - 1][itr1 + 1].children[0].classList.remove(
+                "black"
+              );
+              this.matrix[itr - 1][itr1 + 1].children[0].classList.remove(
+                "damablack"
+              );
+            }
+          }
+        }
+        if (this.leftdiagonalblack == true) {
+          if (this.matrix[itr + 2] && this.matrix[itr + 2][itr1 - 2]) {
+            if (e.target == this.matrix[itr + 2][itr1 - 2]) {
+              this.matrix[itr + 1][itr1 - 1].children[0].classList.remove(
+                "red"
+              );
+              this.matrix[itr + 1][itr1 - 1].children[0].classList.remove(
+                "damared"
+              );
+            }
+          }
+        }
+        if (this.rightdiagonalblack == true) {
+          if (this.matrix[itr + 2] && this.matrix[itr + 2][itr1 + 2]) {
+            if (e.target == this.matrix[itr + 2][itr1 + 2]) {
+              this.matrix[itr + 1][itr1 + 1].children[0].classList.remove(
+                "red"
+              );
+              this.matrix[itr + 1][itr1 + 1].children[0].classList.remove(
+                "damared"
+              );
+            }
+          }
+        }
+        if (this.leftdiagonal2red == true) {
+          if (this.matrix[itr - 4] && this.matrix[itr - 4][itr1 - 4]) {
+            if (e.target == this.matrix[itr - 4][itr1 - 4]) {
+              this.matrix[itr - 3][itr1 - 3].children[0].classList.remove(
+                "black"
+              );
+              this.matrix[itr - 1][itr1 - 1].children[0].classList.remove(
+                "black"
+              );
+              this.matrix[itr - 3][itr1 - 3].children[0].classList.remove(
+                "damablack"
+              );
+              this.matrix[itr - 1][itr1 - 1].children[0].classList.remove(
+                "damablack"
+              );
+            }
+          }
+        }
+        if (this.leftdiagonal2black == true) {
+          if (this.matrix[itr + 4] && this.matrix[itr + 4][itr1 - 4]) {
+            if (e.target == this.matrix[itr + 4][itr1 - 4]) {
+              this.matrix[itr + 3][itr1 - 3].children[0].classList.remove(
+                "red"
+              );
+              this.matrix[itr + 1][itr1 - 1].children[0].classList.remove(
+                "red"
+              );
+              this.matrix[itr + 3][itr1 - 3].children[0].classList.remove(
+                "damared"
+              );
+              this.matrix[itr + 1][itr1 - 1].children[0].classList.remove(
+                "damared"
+              );
+            }
+          }
+        }
+        if (this.rightdiagonal2red == true) {
+          if (this.matrix[itr - 4] && this.matrix[itr - 4][itr1 + 4]) {
+            if (e.target == this.matrix[itr - 4][itr1 + 4]) {
+              this.matrix[itr - 3][itr1 + 3].children[0].classList.remove(
+                "black"
+              );
+              this.matrix[itr - 1][itr1 + 1].children[0].classList.remove(
+                "black"
+              );
+              this.matrix[itr - 3][itr1 + 3].children[0].classList.remove(
+                "damablack"
+              );
+              this.matrix[itr - 1][itr1 + 1].children[0].classList.remove(
+                "damablack"
+              );
+            }
+          }
+        }
+        if (this.rightdiagonal2black == true) {
+          if (this.matrix[itr + 4] && this.matrix[itr + 4][itr1 + 4]) {
+            if (e.target == this.matrix[itr + 4][itr1 + 4]) {
+              this.matrix[itr + 3][itr1 + 3].children[0].classList.remove(
+                "red"
+              );
+              this.matrix[itr + 3][itr1 + 3].children[0].classList.remove(
+                "damared"
+              );
+              this.matrix[itr + 1][itr1 + 1].children[0].classList.remove(
+                "red"
+              );
+              this.matrix[itr + 1][itr1 + 1].children[0].classList.remove(
+                "damared"
+              );
+            }
+          }
+        }
+        this.leftdiagonalred = false;
+        this.rightdiagonalred = false;
+        this.leftdiagonalblack = false;
+        this.rightdiagonalblack = false;
+        this.leftdiagonal2red = false;
+        this.rightdiagonal2red = false;
+        this.leftdiagonal2black = false;
+        this.rightdiagonalblack = false;
+        (this.leftdiagonalupdama = false),
+          (this.rightdiagonalupdama = false),
+          (this.leftdiagonaldowndama = false),
+          (this.rightdiagonaldowndama = false),
+          (this.leftdiagonal2updama = false),
+          (this.rightdiagonal2updama = false),
+          (this.leftdiagonal2downdama = false),
+          (this.rightdiagonal2downdama = false);
+
         if (this.redturn == true) {
           this.redturn = false;
           this.blackturn = true;
