@@ -1,6 +1,6 @@
 <template>
-<div>
-  <h1 class="turn">{{msg}}'s Turn</h1>
+<div id="wrapper">
+  <h1 >{{msg}}'s Turn</h1>
     <div class="grid">
         <div class="grid-items" v-for="i in 64"  v-on:click="alertme($event,Math.floor((i-1)/8),(i-1)-(8*(Math.floor((i-1)/8))))" v-bind:key=i><div  :class="{unit: isactive}"></div></div>
     </div>
@@ -1221,8 +1221,7 @@ export default {
   width: 500px;
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);
-  top: 50%;
+  transform: translate(-50%);
   justify-items: center;
 }
 .unclickable {
@@ -1255,6 +1254,7 @@ export default {
   -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
 }
+
 .red {
   background-color: red;
   -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
@@ -1272,10 +1272,5 @@ export default {
 }
 .damablack {
   background: blue;
-}
-.turn {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
 }
 </style>
