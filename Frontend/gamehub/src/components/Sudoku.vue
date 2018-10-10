@@ -28,6 +28,7 @@
 export default {
   data() {
     return {
+<<<<<<< HEAD
       msg: "Welcome to Your Sudoku Game",
       g1: [
         [0, 0, 0, 0, 7, 8, 5, 0, 9],
@@ -56,12 +57,31 @@ export default {
       secondsLabel: "",
       minutesLabel: ""
     };
+=======
+
+    	msg: 'Welcome to Your Sudoku Game',
+    	g1 : [  [0,0,0,0,1,0,0,5,6], [0,7,8,3,0,5,1,9,0], [5,0,9,4,0,6,0,0,2], 
+              [7,0,0,8,0,0,0,0,0], [0,2,3,0,0,0,9,6,0], [0,0,0,0,0,2,0,0,3],
+              [3,0,0,9,0,4,6,0,7], [0,6,4,1,0,3,5,8,0], [9,5,0,0,6,0,0,0,0]
+          ],
+		solved : [  [4,3,2,7,1,9,8,5,6], [6,7,8,3,2,5,1,9,4], [5,1,9,4,8,6,3,7,2], 
+                  [7,9,6,8,3,1,2,4,5], [1,2,3,5,4,7,9,6,8], [8,4,5,6,9,2,7,1,3],
+                  [3,8,1,9,5,4,6,2,7], [2,6,4,1,7,3,5,8,9], [9,5,7,2,6,8,4,3,1]
+			  ],
+		activeElement:'',
+		totalSeconds:0,
+		secondsLabel:'',
+		minutesLabel:''
+
+    }
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
   },
   methods: {
     running(x) {
       var scope = this;
       scope.activeElement = x.target;
 
+<<<<<<< HEAD
       window.addEventListener("keydown", function(e) {
         e.preventDefault();
         if (e.keyCode == 49) {
@@ -97,6 +117,57 @@ export default {
           }
         }
       }
+=======
+		if(done){
+			// make a call to a function that will check if the solution is correct or not
+			this.failOrSuccess();
+		}
+	},
+	newGame(){
+		for(var i = 1; i<=9; i++){
+        	for(var j = 1; j<=9; j++){
+            	if(this.g1[i-1][j-1]==0){
+                	document.getElementById("box"+i+""+j).innerHTML = '';
+            	}else{
+                	document.getElementById("box"+i+""+j).innerHTML = this.g1[i-1][j-1];
+            	}
+          	}
+    	}
+	},
+	failOrSuccess(){
+		var success = true;
+		// checking each row by itself
+		for(var i=1; i<=9; i++){
+			for(var j=1; j<=9; j++){
+				if( document.getElementById("box"+i+""+j).innerHTML == document.getElementById("box"+i+""+1).innerHTML && j!=1){
+					success = false;
+				}
+				if( document.getElementById("box"+i+""+j).innerHTML == document.getElementById("box"+i+""+2).innerHTML && j!=2){
+					success = false;
+				}
+				if( document.getElementById("box"+i+""+j).innerHTML == document.getElementById("box"+i+""+3).innerHTML && j!=3){
+					success = false;
+				}
+				if( document.getElementById("box"+i+""+j).innerHTML == document.getElementById("box"+i+""+4).innerHTML && j!=4){
+					success = false;
+				}
+				if( document.getElementById("box"+i+""+j).innerHTML == document.getElementById("box"+i+""+5).innerHTML && j!=5){
+					success = false;
+				}
+				if( document.getElementById("box"+i+""+j).innerHTML == document.getElementById("box"+i+""+6).innerHTML && j!=6){
+					success = false;
+				}
+				if( document.getElementById("box"+i+""+j).innerHTML == document.getElementById("box"+i+""+7).innerHTML && j!=7){
+					success = false;
+				}
+				if( document.getElementById("box"+i+""+j).innerHTML == document.getElementById("box"+i+""+8).innerHTML && j!=8){
+					success = false;
+				}
+				if( document.getElementById("box"+i+""+j).innerHTML == document.getElementById("box"+i+""+9).innerHTML && j!=9){
+					success = false;
+				}
+			}
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
 
       if (done) {
         // make a call to a function that will check if the solution is correct or not
@@ -269,6 +340,7 @@ export default {
 			Once sorted you check that index 'i' of the array doesn't equal index 'i+1'.
 			When done without having any equal values then you have a valid 3 X 3 block of cells */
 
+<<<<<<< HEAD
       // the outer for loops are for traversing the blocks of 9 cells
       for (var i = 1; i <= 9; i += 3) {
         for (var j = 1; j <= 9; j += 3) {
@@ -351,6 +423,37 @@ export default {
               ) {
                 success = false;
               }
+=======
+		if(!success){
+			alert("incorrect solution");
+		}else{
+			alert("congratulations");
+		}
+	},
+	setTime() {
+		this.totalSeconds = this.totalSeconds+1;
+		this.secondsLabel.innerHTML = this.pad(this.totalSeconds % 60);
+		this.minutesLabel.innerHTML = this.pad(parseInt(this.totalSeconds / 60));
+	},
+	pad(val) {
+		var valString = val + "";
+		if (valString.length < 2) {
+			return "0" + valString;
+		} else {
+			return valString;
+		}
+	},
+
+
+  },
+  mounted: function(){
+    for(var i = 1; i<=9; i++){
+        for(var j = 1; j<=9; j++){
+            if(this.g1[i-1][j-1]==0){
+                document.getElementById("box"+i+""+j).innerHTML = '';
+            }else{
+                document.getElementById("box"+i+""+j).innerHTML = this.g1[i-1][j-1];
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
             }
           }
         }

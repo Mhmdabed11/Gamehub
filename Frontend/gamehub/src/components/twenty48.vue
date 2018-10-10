@@ -145,8 +145,14 @@ export default {
       this.printValues(value, x1, y1);
       this.printValues(value_2, x2, y2);
     },
+<<<<<<< HEAD
     running() {
       window.addEventListener("keydown", function(e) {
+=======
+    running(){ 
+      let classes = ["num2048", "num10248", "num512", "num256", "num128", "num64", "num32", "num16", "num8", "num4", "num2"];
+      window.addEventListener("keydown", function(e){
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
         e.preventDefault();
         if (e.keyCode == 37) {
           // left arrow code
@@ -178,6 +184,7 @@ export default {
                   document.getElementById("box" + i).innerHTML
                 );
 
+<<<<<<< HEAD
                 document.getElementById(
                   "box" + destination
                 ).innerHTML = currentValue;
@@ -198,6 +205,17 @@ export default {
                 var previousValue = parseInt(
                   document.getElementById("box" + i).innerHTML
                 );
+=======
+                document.getElementById("box"+destination).innerHTML = currentValue;
+                document.getElementById("box"+destination).classList.add("num"+currentValue);
+                document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
+                
+                counter++;	
+              }else if(document.getElementById("box"+destination).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
 
                 document.getElementById(
                   "box" + destination
@@ -221,6 +239,7 @@ export default {
                   document.getElementById("box" + i).innerHTML
                 );
 
+<<<<<<< HEAD
                 document.getElementById(
                   "box" + (destination + 1)
                 ).innerHTML = currentValue;
@@ -228,8 +247,18 @@ export default {
                 document
                   .getElementById("box" + i)
                   .classList.remove("num" + previousValue);
+=======
+                document.getElementById("box"+(destination+1)).innerHTML = currentValue;
+                document.getElementById("box"+(destination+1)).classList.add("num"+currentValue);
+                document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
                 counter++;
               }
+            }
+            // this is an alternative solution to remove the colors of the empty boxes
+            if(document.getElementById("box"+i).innerHTML == ""){
+              document.getElementById("box"+i).classList.remove(...classes);
             }
           }
 
@@ -240,7 +269,10 @@ export default {
             while (document.getElementById("box" + location).innerHTML != "") {
               location = Math.ceil(Math.random() * 16);
             }
+<<<<<<< HEAD
             7;
+=======
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
             // deciding if the number inserted will be 2 or 4 based on probabilities
             var random2 = Math.random();
             var value_2 = Math.ceil(random2 * 4);
@@ -249,7 +281,12 @@ export default {
             } else {
               value_2 = 4;
             }
+<<<<<<< HEAD
             document.getElementById("box" + location).innerHTML = value_2;
+=======
+            document.getElementById("box"+location).innerHTML = value_2;
+            document.getElementById("box"+location).classList.add("num"+value_2);	
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
           }
         } else if (e.keyCode == 38) {
           // up arrow code
@@ -290,6 +327,7 @@ export default {
                   .getElementById("box" + i)
                   .classList.remove("num" + previousValue);
                 counter++;
+<<<<<<< HEAD
               } else if (
                 document.getElementById("box" + destination).innerHTML == ""
               ) {
@@ -308,8 +346,29 @@ export default {
                 ).innerHTML = document.getElementById("box" + i).innerHTML;
                 document.getElementById("box" + i).innerHTML = "";
                 document.getElementById("box" + i).classList.remove("num");
+=======
+              }else if(document.getElementById("box"+destination).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+
+                document.getElementById("box"+destination).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+destination).classList.add("num"+currentValue);
+                document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
+                counter++;	
+              }else if(document.getElementById("box"+(destination+4)).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+                document.getElementById("box"+(destination+4)).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+(destination+4)).classList.add("num"+currentValue);
+                document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
                 counter++;
               }
+            }
+            if(document.getElementById("box"+i).innerHTML == ""){
+              document.getElementById("box"+i).classList.remove(...classes);
             }
           }
 
@@ -329,7 +388,13 @@ export default {
             } else {
               value_2 = 4;
             }
+<<<<<<< HEAD
             document.getElementById("box" + location).innerHTML = value_2;
+=======
+            // this is an alternative solution to remove the colors of the empty boxes
+            document.getElementById("box"+location).innerHTML = value_2;
+            document.getElementById("box"+location).classList.add("num"+value_2);		
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
           }
         } else if (e.keyCode == 39) {
           // right arrow code
@@ -373,6 +438,7 @@ export default {
                   .getElementById("box" + i)
                   .classList.remove("num" + previousValue);
 
+<<<<<<< HEAD
                 counter++;
               } else if (
                 document.getElementById("box" + destination).innerHTML == ""
@@ -390,8 +456,34 @@ export default {
                   "box" + (destination - 1)
                 ).innerHTML = document.getElementById("box" + i).innerHTML;
                 document.getElementById("box" + i).innerHTML = "";
+=======
+                counter++;	
+              }else if(document.getElementById("box"+destination).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+
+                document.getElementById("box"+destination).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+destination).classList.add("num"+currentValue);
+
+                document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
+
+                counter++;
+              }else if(document.getElementById("box"+(destination-1)).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+
+                document.getElementById("box"+(destination-1)).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+(destination-1)).classList.add("num"+currentValue);
+                document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
                 counter++;
               }
+            }
+            // this is an alternative solution to remove the colors of the empty boxes
+            if(document.getElementById("box"+i).innerHTML == ""){
+              document.getElementById("box"+i).classList.remove(...classes);
             }
           }
 
@@ -411,7 +503,12 @@ export default {
             } else {
               value_2 = 4;
             }
+<<<<<<< HEAD
             document.getElementById("box" + location).innerHTML = value_2;
+=======
+            document.getElementById("box"+location).innerHTML = value_2;
+            document.getElementById("box"+location).classList.add("num"+value_2);		
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
           }
         } else if (e.keyCode == 40) {
           // down arrow code
@@ -425,6 +522,7 @@ export default {
               ) {
                 destination = destination + 4;
               }
+<<<<<<< HEAD
               if (
                 document.getElementById("box" + destination).innerHTML ==
                 document.getElementById("box" + i).innerHTML
@@ -451,8 +549,42 @@ export default {
                   "box" + (destination - 4)
                 ).innerHTML = document.getElementById("box" + i).innerHTML;
                 document.getElementById("box" + i).innerHTML = "";
+=======
+              if(document.getElementById("box"+destination).innerHTML == document.getElementById("box"+i).innerHTML){
+                // storing the value of the number that will put inside the box
+                var currentValue = parseInt(document.getElementById("box"+destination).innerHTML)*2;
+                // storing the PREVIOUS value of the number that was in the box 
+                // because we will use this number to change the value of a class-list
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+
+                document.getElementById("box"+destination).innerHTML = currentValue;
+                document.getElementById("box"+destination).classList.add("num"+currentValue);
+                document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
+                counter++;
+              }else if(document.getElementById("box"+destination).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+
+                document.getElementById("box"+destination).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+destination).classList.add("num"+currentValue);
+                document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
+                counter++;
+              }else if(document.getElementById("box"+(destination-4)).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+                document.getElementById("box"+(destination-4)).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+(destination-4)).classList.add("num"+currentValue);
+                document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
                 counter++;
               }
+            }
+            // this is an alternative solution to remove the colors of the empty boxes 
+            if(document.getElementById("box"+i).innerHTML == ""){
+              document.getElementById("box"+i).classList.remove(...classes);
             }
           }
 
@@ -472,7 +604,12 @@ export default {
             } else {
               value_2 = 4;
             }
+<<<<<<< HEAD
             document.getElementById("box" + location).innerHTML = value_2;
+=======
+            document.getElementById("box"+location).innerHTML = value_2;
+            document.getElementById("box"+location).classList.add("num"+value_2);		
+>>>>>>> fef39a75205ac323189492cb8da981eace702050
           }
         }
       });

@@ -1,0 +1,9 @@
+{
+    "_id": "_design/users",
+    "language": "javascript",
+    "views": {
+        "getByUsername": {
+            "map": "function(doc) {\n  if(doc.type == 'user'){\n    emit(doc.username, null);\n  }\n}"
+        }
+    }
+ }
