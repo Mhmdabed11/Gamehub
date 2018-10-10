@@ -147,7 +147,8 @@ export default {
       this.printValues(value_2, x2, y2);
 
     },
-    running(){
+    running(){ 
+      let classes = ["num2048", "num10248", "num512", "num256", "num128", "num64", "num32", "num16", "num8", "num4", "num2"];
       window.addEventListener("keydown", function(e){
         e.preventDefault();
         if(e.keyCode==37){
@@ -170,9 +171,10 @@ export default {
                 document.getElementById("box"+destination).classList.add("num"+currentValue);
                 document.getElementById("box"+i).innerHTML = "";
                 document.getElementById("box"+i).classList.remove("num"+previousValue);
+                
                 counter++;	
               }else if(document.getElementById("box"+destination).innerHTML== ""){
-                var currentValue = parseInt(document.getElementById("box"+destination).innerHTML);
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
                 var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
 
                 document.getElementById("box"+destination).innerHTML = document.getElementById("box"+i).innerHTML;
@@ -185,10 +187,15 @@ export default {
                 var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
 
                 document.getElementById("box"+(destination+1)).innerHTML = currentValue;
+                document.getElementById("box"+(destination+1)).classList.add("num"+currentValue);
                 document.getElementById("box"+i).innerHTML = "";
                 document.getElementById("box"+i).classList.remove("num"+previousValue);
                 counter++;
               }
+            }
+            // this is an alternative solution to remove the colors of the empty boxes
+            if(document.getElementById("box"+i).innerHTML == ""){
+              document.getElementById("box"+i).classList.remove(...classes);
             }
           }
 
@@ -198,7 +205,7 @@ export default {
             var location = Math.ceil(random * 16);
             while(document.getElementById("box"+location).innerHTML != ""){
               location = Math.ceil(Math.random() * 16);
-            }7
+            }
             // deciding if the number inserted will be 2 or 4 based on probabilities
             var random2 =  Math.random(); 
             var value_2 = Math.ceil(random2 * 4);
@@ -207,7 +214,8 @@ export default {
             }else{
               value_2 = 4;
             }
-            document.getElementById("box"+location).innerHTML = value_2;	
+            document.getElementById("box"+location).innerHTML = value_2;
+            document.getElementById("box"+location).classList.add("num"+value_2);	
           }
         }else if(e.keyCode==38){
           // up arrow code
@@ -232,16 +240,26 @@ export default {
                 document.getElementById("box"+i).classList.remove("num"+previousValue);
                 counter++;
               }else if(document.getElementById("box"+destination).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+
                 document.getElementById("box"+destination).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+destination).classList.add("num"+currentValue);
                 document.getElementById("box"+i).innerHTML = "";
-                document.getElementById("box"+i).classList.remove("num");
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
                 counter++;	
               }else if(document.getElementById("box"+(destination+4)).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
                 document.getElementById("box"+(destination+4)).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+(destination+4)).classList.add("num"+currentValue);
                 document.getElementById("box"+i).innerHTML = "";
-                document.getElementById("box"+i).classList.remove("num");
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
                 counter++;
               }
+            }
+            if(document.getElementById("box"+i).innerHTML == ""){
+              document.getElementById("box"+i).classList.remove(...classes);
             }
           }
           
@@ -260,7 +278,9 @@ export default {
             }else{
               value_2 = 4;
             }
-            document.getElementById("box"+location).innerHTML = value_2;	
+            // this is an alternative solution to remove the colors of the empty boxes
+            document.getElementById("box"+location).innerHTML = value_2;
+            document.getElementById("box"+location).classList.add("num"+value_2);		
           }
 
         }else if(e.keyCode==39){
@@ -287,14 +307,30 @@ export default {
 
                 counter++;	
               }else if(document.getElementById("box"+destination).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+
                 document.getElementById("box"+destination).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+destination).classList.add("num"+currentValue);
+
                 document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
+
                 counter++;
               }else if(document.getElementById("box"+(destination-1)).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+
                 document.getElementById("box"+(destination-1)).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+(destination-1)).classList.add("num"+currentValue);
                 document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
                 counter++;
               }
+            }
+            // this is an alternative solution to remove the colors of the empty boxes
+            if(document.getElementById("box"+i).innerHTML == ""){
+              document.getElementById("box"+i).classList.remove(...classes);
             }
           }
           
@@ -313,7 +349,8 @@ export default {
             }else{
               value_2 = 4;
             }
-            document.getElementById("box"+location).innerHTML = value_2;	
+            document.getElementById("box"+location).innerHTML = value_2;
+            document.getElementById("box"+location).classList.add("num"+value_2);		
           }
 
         }else if(e.keyCode==40){
@@ -326,18 +363,39 @@ export default {
                 destination = destination+4;
               }
               if(document.getElementById("box"+destination).innerHTML == document.getElementById("box"+i).innerHTML){
-                document.getElementById("box"+destination).innerHTML = parseInt(document.getElementById("box"+destination).innerHTML)*2;
+                // storing the value of the number that will put inside the box
+                var currentValue = parseInt(document.getElementById("box"+destination).innerHTML)*2;
+                // storing the PREVIOUS value of the number that was in the box 
+                // because we will use this number to change the value of a class-list
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+
+                document.getElementById("box"+destination).innerHTML = currentValue;
+                document.getElementById("box"+destination).classList.add("num"+currentValue);
                 document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
                 counter++;
               }else if(document.getElementById("box"+destination).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
+
                 document.getElementById("box"+destination).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+destination).classList.add("num"+currentValue);
                 document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
                 counter++;
               }else if(document.getElementById("box"+(destination-4)).innerHTML== ""){
+                var currentValue = parseInt(document.getElementById("box"+i).innerHTML);
+                var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
                 document.getElementById("box"+(destination-4)).innerHTML = document.getElementById("box"+i).innerHTML;
+                document.getElementById("box"+(destination-4)).classList.add("num"+currentValue);
                 document.getElementById("box"+i).innerHTML = "";
+                document.getElementById("box"+i).classList.remove("num"+previousValue);
                 counter++;
               }
+            }
+            // this is an alternative solution to remove the colors of the empty boxes 
+            if(document.getElementById("box"+i).innerHTML == ""){
+              document.getElementById("box"+i).classList.remove(...classes);
             }
           }
 
@@ -356,7 +414,8 @@ export default {
             }else{
               value_2 = 4;
             }
-            document.getElementById("box"+location).innerHTML = value_2;	
+            document.getElementById("box"+location).innerHTML = value_2;
+            document.getElementById("box"+location).classList.add("num"+value_2);		
           }
         }
       })

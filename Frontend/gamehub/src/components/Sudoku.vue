@@ -94,10 +94,10 @@ export default {
 	newGame(){
 		for(var i = 1; i<=9; i++){
         	for(var j = 1; j<=9; j++){
-            	if(this.solved[i-1][j-1]==0){
+            	if(this.g1[i-1][j-1]==0){
                 	document.getElementById("box"+i+""+j).innerHTML = '';
             	}else{
-                	document.getElementById("box"+i+""+j).innerHTML = this.solved[i-1][j-1];
+                	document.getElementById("box"+i+""+j).innerHTML = this.g1[i-1][j-1];
             	}
           	}
     	}
