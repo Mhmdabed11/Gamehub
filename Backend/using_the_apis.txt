@@ -1,8 +1,0 @@
-update requires: 
-  -document id
-  -name of game
-  -score
-getuserdata requires:
-  -document id
-gethighscore requires:
-  -name of the game
