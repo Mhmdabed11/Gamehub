@@ -92,7 +92,8 @@ this.$router.push("/minesweeper")
 }
 </script>
 
-<style>
+<style scoped>
+
 #ban{width:100%;height:75px;background-color:black;display:flex;flex-direction: row;justify-content:space-between;margin:0px;}
 .menubutton{height:50%;margin-top:18px;}
 input{height:30%;margin-top:20px;}

@@ -358,7 +358,7 @@ that=this;
 </script>
 
 
-<style>
+<style scoped>
 table {
     border-collapse: collapse;
     position:absolute;

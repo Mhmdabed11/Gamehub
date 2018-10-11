@@ -41,7 +41,8 @@ export default {
 		activeElement:'',
 		totalSeconds:0,
 		secondsLabel:'',
-		minutesLabel:''
+		minutesLabel:'',
+		score:0,
 
     }
   },
@@ -53,23 +54,59 @@ export default {
       	window.addEventListener("keydown", function (e){
 			e.preventDefault();
 			if(e.keyCode==49){
-				scope.activeElement.innerHTML = "1";
+				if(scope.activeElement.classList.contains("unChangeable")){
+					;
+				}else{
+					scope.activeElement.innerHTML = "1";
+				}
 			}else if(e.keyCode==50){
-				scope.activeElement.innerHTML = "2";
+				if(scope.activeElement.classList.contains("unChangeable")){
+					;
+				}else{
+					scope.activeElement.innerHTML = "2";
+				}
 			}else if(e.keyCode==51){
-				scope.activeElement.innerHTML = "3";
+				if(scope.activeElement.classList.contains("unChangeable")){
+					;
+				}else{
+					scope.activeElement.innerHTML = "3";
+				}
 			}else if(e.keyCode==52){
-				scope.activeElement.innerHTML = "4";
+				if(scope.activeElement.classList.contains("unChangeable")){
+					;
+				}else{
+					scope.activeElement.innerHTML = "4";
+				}
 			}else if(e.keyCode==53){
-				scope.activeElement.innerHTML = "5";
+				if(scope.activeElement.classList.contains("unChangeable")){
+					;
+				}else{
+					scope.activeElement.innerHTML = "5";
+				}
 			}else if(e.keyCode==54){
-				scope.activeElement.innerHTML = "6";
+				if(scope.activeElement.classList.contains("unChangeable")){
+					;
+				}else{
+					scope.activeElement.innerHTML = "6";
+				}
 			}else if(e.keyCode==55){
-				scope.activeElement.innerHTML = "7";
+				if(scope.activeElement.classList.contains("unChangeable")){
+					;
+				}else{
+					scope.activeElement.innerHTML = "7";
+				}
 			}else if(e.keyCode==56){
-				scope.activeElement.innerHTML = "8";
+				if(scope.activeElement.classList.contains("unChangeable")){
+					;
+				}else{
+					scope.activeElement.innerHTML = "8";
+				}
 			}else if(e.keyCode==57){
-				scope.activeElement.innerHTML = "9";
+				if(scope.activeElement.classList.contains("unChangeable")){
+					;
+				}else{
+					scope.activeElement.innerHTML = "9";
+				}
 			}
 			// EDIT: This will not work if you are working in strict mode ("use strict";)
 			//this.removeEventListener('keydown', foo(this) );
@@ -89,7 +126,10 @@ export default {
 		if(done){
 			// make a call to a function that will check if the solution is correct or not
 			this.failOrSuccess();
+		}else{
+			alert("still have empty cells that need to be filled");
 		}
+		
 	},
 	newGame(){
 		for(var i = 1; i<=9; i++){
@@ -97,10 +137,12 @@ export default {
             	if(this.g1[i-1][j-1]==0){
                 	document.getElementById("box"+i+""+j).innerHTML = '';
             	}else{
-                	document.getElementById("box"+i+""+j).innerHTML = this.g1[i-1][j-1];
+					document.getElementById("box"+i+""+j).innerHTML = this.g1[i-1][j-1];
+					document.getElementById("box"+i+""+j).classList.add("unChangeable");
             	}
           	}
-    	}
+		}
+		this.totalSeconds = 0;
 	},
 	failOrSuccess(){
 		var success = true;
@@ -232,7 +274,10 @@ export default {
 		if(!success){
 			alert("incorrect solution");
 		}else{
-			alert("congratulations");
+			var seconds = parseInt(document.getElementById("seconds").innerHTML);
+			var minutes = parseInt(document.getElementById("minutes").innerHTML);
+			this.score = (seconds + (minutes*60));
+			alert("congratulations, you solved it in "+minutes+":"+seconds+" and your score is:"+this.score);
 		}
 	},
 	setTime() {
@@ -257,7 +302,8 @@ export default {
             if(this.g1[i-1][j-1]==0){
                 document.getElementById("box"+i+""+j).innerHTML = '';
             }else{
-                document.getElementById("box"+i+""+j).innerHTML = this.g1[i-1][j-1];
+				document.getElementById("box"+i+""+j).innerHTML = this.g1[i-1][j-1];
+				document.getElementById("box"+i+""+j).classList.add("unChangeable");
             }
               
         }
@@ -309,6 +355,10 @@ export default {
 .header h1{
 	text-align: center;
 	background: #F2B24E;
+}
+
+#minutes, #seconds{
+	color: black;
 }
 
 @media only screen and (min-width: 700px){

@@ -169,7 +169,7 @@ display:function(e){
 }
 </script>
 
-<style>
+<style scoped>
 table {
     border-collapse: collapse;
     position:absolute;
