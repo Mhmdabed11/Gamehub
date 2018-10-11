@@ -3,7 +3,6 @@ var nano = require('nano')('http://localhost:5984/gamehub-db');
 
 module.exports = {
     saveScore: function (req, res, next) {
-        req.body = JSON.parse(req.body);
         var username = req.body.username;
         var game = req.body.game;
         var score = req.body.score;
@@ -39,7 +38,9 @@ module.exports = {
     getByGame: function (req, res, next) {
         //var game = req.params.game;
 
-        nano.view('scores', 'getByGame', {group:true}).then((body) => {
+        nano.view('scores', 'getByGame', {
+            group: true
+        }).then((body) => {
             //console.log(body.rows[0].value)
             if (body.rows.length > 0) {
                 res.send(body.rows)
