@@ -18,16 +18,50 @@
 
     </div>
     
+<<<<<<< HEAD
+    <button v-on:click="twozero" class="menubutton"> 2048 </button>
+        <button v-on:click="hangman" class="menubutton"> hangman </button>
+    <button v-on:click="checkers" class="menubutton"> Checkers </button>
+
+    <button v-on:click="connect" class="menubutton"> Connect 4 </button>
+    <button v-on:click="memory" class="menubutton"> Memory </button>
+
+    <button v-on:click="mines" class="menubutton"> Minesweeper </button>
+    <button v-on:click="puzzle" class="menubutton"> Puzzle Slider </button>
+
+    <button v-on:click="reversi" class="menubutton"> Reversi  </button>
+    <button v-on:click="sudoku" class="menubutton"> Sudoku </button>
+    <p>{{this.$store.getters.getusername}}</p>
+<label>Username:</label>
+<input type="txt" placesholder="Username">
+<label>Password:</label>
+<input type="txt" placesholder="Password">
+    <button> Login </button>
+    
+</div>
+=======
+>>>>>>> 9fd88c4189e23ebfbd5c7ca5e5196e536961f01a
 </div>
 </template>
 
  <script>
+<<<<<<< HEAD
      var a = document.getElementById("2048");
 
  export default {
 
 
+=======
+export default {
+>>>>>>> 2f7e03a2c1fe10d1d64a9957319ea38f1d2007bf
   data() {
+<<<<<<< HEAD
+    return {};
+  },
+  methods: {
+    twozero: function() {
+      this.$router.push("/twenty48");
+=======
   return{
       imagee: [
         require('@/assets/2048.png'),
@@ -49,6 +83,7 @@ methods:{
     pic[i].classList.remove("clicked")
     },
     twozero:function(){
+<<<<<<< HEAD
     this.$router.push("/twenty48")
     var a = document.getElementById("2048");
     this.clickedpic();
@@ -109,13 +144,101 @@ methods:{
     this.clickedpic();
     a.classList.add("clicked");
 
-    },
+=======
+this.$router.push("/twenty48")
 
-}
-}
+>>>>>>> 9fd88c4189e23ebfbd5c7ca5e5196e536961f01a
+    },
+    hangman: function() {
+      this.$router.push("/hangman");
+    },
+    reversi: function() {
+      this.$router.push("/reversi");
+    },
+    memory: function() {
+      this.$router.push("/memory");
+    },
+    checkers: function() {
+      this.$router.push("/checkers");
+    },
+    puzzle: function() {
+      this.$router.push("/puzzleslider");
+    },
+    sudoku: function() {
+      this.$router.push("/sudoku");
+    },
+    connect: function() {
+      this.$router.push("/connect4");
+>>>>>>> 2f7e03a2c1fe10d1d64a9957319ea38f1d2007bf
+    },
+    mines: function() {
+      this.$router.push("/minesweeper");
+    }
+  }
+};
 </script>
 
 <style scoped>
+<<<<<<< HEAD
+#ban {
+  width: 100%;
+  height: 75px;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px;
+}
+.menubutton {
+  height: 50%;
+  margin-top: 18px;
+}
+input {
+  height: 30%;
+  margin-top: 20px;
+}
+label {
+  margin-top: 30px;
+  color: white;
+}
+@media screen and (max-width: 800px) {
+  .menubutton {
+    display: none;
+  }
+  .dropmenu {
+    display: block !important;
+    margin: 0px;
+  }
+}
+.dropmenu {
+  display: none;
+  margin: 0px;
+}
+.dropmenu:hover {
+  position: relative;
+}
+.menu {
+  display: none;
+  position: absolute;
+  background-color: black;
+}
+.dropmenu:hover .menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.menu:hover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dropbutton {
+  height: 50px;
+}
+img {
+  margin: 0px;
+}
+=======
 .menu{
     position: relative;
     top: -50px;
@@ -139,4 +262,5 @@ label{margin-top:30px;color:white;}
 .menu:hover{display:flex;flex-direction: column;justify-content:space-between;}
 .dropbutton{height:50px;}
 img{margin:0px;} */
+>>>>>>> 9fd88c4189e23ebfbd5c7ca5e5196e536961f01a
 </style>

@@ -43,6 +43,8 @@
           [-1, -1]
         ],
 
+        startingPlayer: '',
+
         currentPlayer: '',
 
         scores: {
@@ -55,6 +57,7 @@
     mounted(){
       var players = ["white", "black"];
       this.currentPlayer = players[Math.floor((Math.random() * 2))];
+      this.startingPlayer = this.currentPlayer;
     },
     methods: {
       isGameOver() {
@@ -144,24 +147,36 @@
       },
 
       togglePiece(rowIndex, columnIndex){
-        var validityArray = this.isValid(this.currentPlayer, rowIndex, columnIndex)
-        if(validityArray){
-          for(var i=0;i<validityArray.length;i++){
-            this.grid[validityArray[i][0]][validityArray[i][1]] = this.currentPlayer;
-          }
-          this.grid[rowIndex][columnIndex] = this.currentPlayer;
-          this.scores[this.currentPlayer] += validityArray.length + 1;
-          if(this.currentPlayer == 'black'){
-            this.currentPlayer = 'white';
-            this.scores[this.currentPlayer] -= validityArray.length;
+        if(this.isGameOver()){
+          alert("Game Over");
+          
+          var payload = {
+            username: this.$stores.getters.getUsername,
+            game: "reversi",
+            score: this.scores[this.startingPlayer]
+          };
 
-          } else if(this.currentPlayer == 'white'){
-            this.currentPlayer = 'black';
-            this.scores[this.currentPlayer] -= validityArray.length;
-          }
-          this.$forceUpdate();
+          this.$store.commit("saveScore", payload);
         } else {
-          alert("Illegal move.");
+          var validityArray = this.isValid(this.currentPlayer, rowIndex, columnIndex)
+          if(validityArray){
+            for(var i=0;i<validityArray.length;i++){
+              this.grid[validityArray[i][0]][validityArray[i][1]] = this.currentPlayer;
+            }
+            this.grid[rowIndex][columnIndex] = this.currentPlayer;
+            this.scores[this.currentPlayer] += validityArray.length + 1;
+            if(this.currentPlayer == 'black'){
+              this.currentPlayer = 'white';
+              this.scores[this.currentPlayer] -= validityArray.length;
+
+            } else if(this.currentPlayer == 'white'){
+              this.currentPlayer = 'black';
+              this.scores[this.currentPlayer] -= validityArray.length;
+            }
+            this.$forceUpdate();
+          } else {
+            alert("Illegal move.");
+          }
         }
       }
     }
