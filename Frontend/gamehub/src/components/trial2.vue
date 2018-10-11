@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table>
+      <table>
             <tr>
                 <th>{{games[0]}}</th>
                 <th colspan="2">Scores</th>
