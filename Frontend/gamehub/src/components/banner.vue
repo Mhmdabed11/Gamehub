@@ -11,13 +11,23 @@
     <!-- <img :src= 'imagee[]' class="img" v-on:click="puzzle" />   -->
     <div class="pic"> <img :src= 'imagee[6]' class="img" v-on:click="reversi()" />  <br><a class="a" id="reversi"> Reversi </a> </div>
     <div class="pic"> <img :src= 'imagee[7]' class="img" v-on:click="sudoku()" />  <br><a class="a" id="sudoku"> Sudoku </a> </div>
-
-    <label>Username</label>
-    <button class="menubutton"> HighScores </button>
-    <button class="menubutton"> Signout </button>
-
+    <div class="datawrapper">
+        <ul>
+    <li> <label class="user">Username</label> </li>
+    <li> <button class="data signoutbtn"> Signout </button> </li>
+    <li> <div class="dropdown">
+        <button class="data hsbtn"> HighScores </button>
+        <div class="dropdown-content"> 
+            <a class="item"> My HighScores</a> 
+            <a class="item"> All HighScores</a> 
+        </div>
     </div>
+    </li>
+    </ul>
+    </div>
+
     
+   </div> 
 </div>
 </template>
 
@@ -124,9 +134,73 @@ methods:{
 
 }
 .img{width:90px;height:90px; display:inline-block;}
-div{
+.pic{
     display: inline-block;
 }
+.dropbtn {
+    height: 25px;
+    border: none;
+}
+.datawrapper{
+    display:inline-block;
+}
+.data{
+    position: relative;
+    margin-bottom: 8px;
+    top: -24px;
+}
+.user{
+    position: absolute;
+    top: 0;
+    right: 220px;}
+ul {
+  list-style: none;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    height: 0px;
+    top: -3px;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    transition: all 2s;
+
+}
+
+.item{
+    height: 0px;
+    display: none;
+    /* overflow: hidden; */
+    transition: all 2s;
+}
+    
+.dropdown-content .item:hover {
+    background-color: #ddd; 
+    cursor: pointer;
+}
+    
+.dropdown:hover .item{
+    height: 18px;
+    display: block;
+}
+.hsbtn{
+        width:160px;
+    }
+.dropdown:hover .dropdown-content { 
+    height: 54px;
+}
+    
+.item:hover{
+    height: 18px;
+    display: block;
+}
+
+
 /* #ban{width:100%;height:75px;background-color:black;display:flex;flex-direction: row;justify-content:space-between;margin:0px;}
 input{height:30%;margin-top:20px;}
 label{margin-top:30px;color:white;}
