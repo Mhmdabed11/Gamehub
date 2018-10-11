@@ -6,8 +6,8 @@ module.exports = {
 
         req.body = JSON.parse(req.body);
         var username = req.body.username;
-        var game = req.body["game"];
-        var score = req.body["score"];
+        var game = req.body.game;
+        var score = req.body.score;
 
         var newGame = {
             username: username,

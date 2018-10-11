@@ -629,7 +629,7 @@ export default {
     },
 
     alertme(e, itr, itr3) {
-      var payload = { username: "mhmd", game: "2048", score: "20139" };
+      var payload = { username: "mhmd", game: "2048", score: "65" };
       this.$store.commit("saveScore", payload);
       console.log(itr, itr3);
       if (this.matrix[itr][itr3].classList.contains("highlighted") == false) {
