@@ -98,6 +98,7 @@ top.remove("r")
             var that=this;
             this.start=false;
             this.next=true;
+            this.word=this.word.toLowerCase();
             for (var i=-1;i<this.word.length;i++){
                 this.arr.push(this.word[i]);
                 this.guessed.push("");
