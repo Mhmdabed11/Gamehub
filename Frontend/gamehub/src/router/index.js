@@ -7,6 +7,7 @@ import checkers from '@/components/checkers'
 import sudoku from '@/components/Sudoku'
 import twenty from '@/components/twenty48'
 import connect from '@/components/connect4'
+import memory from '@/components/memorymatch'
 import reversi from '@/components/ReversiGrid'
 import hangman from '@/components/hangman'
 import trial from '@/components/trial'
@@ -30,6 +31,11 @@ export default new Router({
       path: '/reversi',
       name: 'reversi',
       component: reversi
+    },
+    {
+      path: '/memory',
+      name: 'memory',
+      component: memory
     },
     {
       path: '/hangman',
