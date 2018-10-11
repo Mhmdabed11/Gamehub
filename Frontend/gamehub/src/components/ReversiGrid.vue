@@ -190,6 +190,9 @@
     height: 50px;
     border: solid 1px black;
   }
+  .grid{
+    margin:0 auto;
+  }
 
   .black-circle {
     border-radius: 45px;
