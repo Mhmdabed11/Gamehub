@@ -2,9 +2,9 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <div class="cards">
-      <button class="btn" v-on:click="playeasy"> Play Easy </button>
-      <button class="btn" v-on:click="playmedium"> Play Medium </button>
-      <button class="btn" v-on:click="playhard"> Play Hard </button>
+      <button id="easybtn" class="btn" v-on:click="playeasy"> Play Easy </button>
+      <button id="mediumbtn" class="btn" v-on:click="playmedium"> Play Medium </button>
+      <button id="hardbtn" class="btn" v-on:click="playhard"> Play Hard </button>
 <br>
       <h1> Score: {{ score }} </h1> 
       <button id="playbtn" class="btn play hidden" v-on:click="play"> Play! </button>
@@ -65,22 +65,22 @@ export default {
         require('@/assets/msn.png'), 
         require('@/assets/pinterest.png'),
         require('@/assets/pinterest.png'),
-        require('@/assets/fb.png'),
-        require('@/assets/fb.png'),
-        require('@/assets/snapchat.png'),
-        require('@/assets/snapchat.png'),
-        require('@/assets/twitter.png'),
-        require('@/assets/twitter.png'),
-        require('@/assets/linkedin.png'),
-        require('@/assets/linkedin.png'),
-        require('@/assets/skype.png'),
-        require('@/assets/skype.png'),
-        require('@/assets/whatsapp.png'),
-        require('@/assets/whatsapp.png'),
-        require('@/assets/insta.png'),
-        require('@/assets/insta.png'),
-        require('@/assets/youtube.png'),
-        require('@/assets/youtube.png'),       
+        require('@/assets/android.png'),
+        require('@/assets/android.png'),
+        require('@/assets/settings.png'),
+        require('@/assets/settings.png'),
+        require('@/assets/phone.png'),
+        require('@/assets/phone.png'),
+        require('@/assets/location.png'),
+        require('@/assets/location.png'),
+        require('@/assets/gmail.png'),
+        require('@/assets/gmail.png'),
+        require('@/assets/like.png'),
+        require('@/assets/like.png'),
+        require('@/assets/instaa.png'),
+        require('@/assets/instaa.png'),
+        require('@/assets/youtubee.png'),
+        require('@/assets/youtubee.png'),       
       ],
       ix: '',
       selectedImage: ''
@@ -89,6 +89,8 @@ export default {
 
   methods:{
 play: function(){
+var btn = document.getElementById("playbtn");
+btn.classList.add("hidden");
 var timetoplay = document.getElementById("playtime");
 timetoplay.classList.add("hidden");
 var x= document.getElementsByClassName("image");
@@ -102,13 +104,13 @@ var starttime = setInterval(() => {
   }
 else{
     window.clearInterval(starttime)
-    this.clickcount=0;
     for(var i=0;i<this.array.length;i++)
       x[i].classList.add("hidden");
         this.remtime = setInterval(() => {
               timetoplay.classList.remove("hidden");
               var timetoplaytext = document.getElementById("remtime");
               timetoplaytext.innerHTML = timetoplay.innerHTML + ' SECONDS TO FINISH PLAYING' ;
+                this.clickcount=0;
                 if(this.playtime>0){
                   this.playtime--;
                 }
@@ -138,6 +140,16 @@ distributepics: function(){
       document.getElementById("remtime").classList.remove("hidden");
     }
 },
+hidebtn: function(){
+    var btn = document.getElementById("playbtn");
+    btn.classList.remove("hidden");
+    var btn1 = document.getElementById("easybtn");
+    btn1.classList.add("hidden");
+    var btn2 = document.getElementById("mediumbtn");
+    btn2.classList.add("hidden");
+    var btn3 = document.getElementById("hardbtn");
+    btn3.classList.add("hidden");
+},
 playeasy: function(){
     this.row = 3;
     this.column = 4;
@@ -146,9 +158,7 @@ playeasy: function(){
     this.memotime=1;
     this.playtime=60;
     this.level="Easy";
-    var btn = document.getElementById("playbtn");
-    btn.classList.remove("hidden");
-
+    this.hidebtn();
    
   },
    playmedium: function(){
@@ -159,9 +169,8 @@ playeasy: function(){
     this.memotime=5;
     this.playtime=60;
     this.level="Medium";
-    var btn = document.getElementById("playbtn");
-    btn.classList.remove("hidden");
-
+    this.hidebtn();
+    
   },
  playhard: function(){
     this.row = 6;
@@ -170,8 +179,7 @@ playeasy: function(){
     this.memotime=5;
     this.playtime=60;
     this.level="Hard";
-    var btn = document.getElementById("playbtn");
-    btn.classList.remove("hidden");
+    this.hidebtn();
   
   },
 playagain: function(){
@@ -239,18 +247,40 @@ correct: function(){
               playagain.classList.remove("hidden");
 
           }
-          else if(this.level=="Medium")
-          if(this.picscount=="20"){
-              timetoplaytext.innerHTML = 'YOU WON!';
+          if(this.level=="Medium")
+            if(this.picscount=="20"){
+             window.clearInterval(this.remtime)
+            if(this.playtime <= 30)
+            this.score=10;
+            else if(this.playtime > 30 && this.playtime < 50)
+            this.score=30;
+            else if(this.playtime >= 50)
+            this.score=50;
+            
+              timetoplaytext.innerHTML = 'YOU WON with ' + this.score + ' !';
               playagain.classList.remove("hidden");
-              window.clearInterval(this.remtime)
+
+          
           }
-          else if(this.level=="Hard")
-          if(this.picscount=="36"){
-              timetoplaytext.innerHTML = 'YOU WON!';
+        
+        
+          if(this.level=="Hard"){
+            console.log(this.picscount);
+ if(this.picscount=="36"){
+             window.clearInterval(this.remtime)
+            if(this.playtime <= 30)
+            this.score=10;
+            else if(this.playtime > 30 && this.playtime < 50)
+            this.score=30;
+            else if(this.playtime >= 50)
+            this.score=50;
+            
+              timetoplaytext.innerHTML = 'YOU WON with ' + this.score + ' !';
               playagain.classList.remove("hidden");
-              window.clearInterval(this.remtime)
+              
           }
+          }
+         
             
 
           this.clickcountfunc();
