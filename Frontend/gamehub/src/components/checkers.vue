@@ -36,7 +36,9 @@ export default {
       selectedarray: [],
       redturn: true,
       blackturn: false,
-      msg: "Red"
+      msg: "Red",
+      blacktokens: "",
+      redtokens: ""
     };
   },
   methods: {
@@ -630,7 +632,7 @@ export default {
 
     alertme(e, itr, itr3) {
       var payload = { username: "mhmd", game: "2048", score: "65" };
-      this.$store.commit("saveScore", payload);
+      //this.$store.commit("saveScore", payload);
       console.log(itr, itr3);
       if (this.matrix[itr][itr3].classList.contains("highlighted") == false) {
         for (let i in this.selectedarray) {
@@ -1139,21 +1141,39 @@ export default {
       }
       this.checkred();
       if (this.checkred() == false) {
-        alert("Game over, Red player loses!");
+        var blacktokens = 0;
         for (let i = 0; i < 8; i++) {
           for (let j = 0; j < 8; j++) {
             this.matrix[i][j].classList.add("unclickable");
+            if (
+              this.matrix[i][j].children[0].classList.contains("black") ||
+              this.matrix[i][j].children[0].classList.contains("damablack")
+            ) {
+              console.log("hey");
+              blacktokens = blacktokens + 1;
+            }
           }
         }
+        this.blacktokens = blacktokens;
+        alert("Game over, Red player loses!" + blacktokens);
       }
       this.checkblack();
       if (this.checkblack() == false) {
-        alert("Game over, Black player loses!");
+        var redtokens = 0;
+
         for (let i = 0; i < 8; i++) {
           for (let j = 0; j < 8; j++) {
             this.matrix[i][j].classList.add("unclickable");
+            if (
+              this.matrix[i][j].children[0].classList.contains("red") ||
+              this.matrix[i][j].children[0].classList.contains("damared")
+            ) {
+              redtokens = redtokens + 1;
+            }
           }
         }
+        this.redtokens = redtokens;
+        alert("Game over, Black player loses!" + redtokens);
       }
     }
   },
