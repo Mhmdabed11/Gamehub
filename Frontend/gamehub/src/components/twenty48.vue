@@ -1,5 +1,13 @@
 <template>
   <div>
+    <div class="header">
+      <h1>{{ msg }}</h1>
+      <div id="buttons_container">
+        <button v-on:click="newGame()" id="new_btn">New Game</button>
+        <button v-on:click="checking()" id="finish_btn">FINISH</button>
+        <span>{{score}}</span>
+      </div>
+	  </div>
     <div class="boxed">
       <div v-for="i in 16" v-bind:id="'box'+i" class="innerBoxes"></div>
     </div >
@@ -12,6 +20,7 @@ export default {
     return {
     	msg: 'Welcome to 2048',
       values: [2, 4],
+      score: 0,
 
     }
   },
@@ -113,6 +122,14 @@ export default {
           break;		
       }
     },
+    newGame(){
+      let classes = ["num2048", "num10248", "num512", "num256", "num128", "num64", "num32", "num16", "num8", "num4", "num2", "num"];
+      for(var i=1; i<17; i++){
+        document.getElementById("box"+i).innerHTML="";
+        document.getElementById("box"+i).classList.remove(...classes);
+      }
+      this.beginGame();
+    },
     beginGame(){
       // need to randomly assign two blocks with values that are either 2 or 4
       // based on experience and trying the game, the value 2 has higher probability of 
@@ -147,16 +164,36 @@ export default {
       this.printValues(value_2, x2, y2);
 
     },
+    totalScore(){
+      for(var i=1; i<17; i++){
+        this.score = this.score + parseInt(document.getElementById("box"+i).innerHTML);
+      }
+    },
     running(){ 
       let classes = ["num2048", "num10248", "num512", "num256", "num128", "num64", "num32", "num16", "num8", "num4", "num2"];
       window.addEventListener("keydown", function(e){
+        
         e.preventDefault();
         if(e.keyCode==37){
-          // left arrow code
+          // left arrow code pressed
           var counter = 0;
+          // we start from index 1. 
+          // NOT FROM 0
           for(var i=1; i<17; i++){
+            // why there is (i%4)!=1 ?? because you are on the left arrow click
+            // then you don't to adjust the column on the most left. This column can't 
+            // be moved further.    
             if(document.getElementById("box"+i).innerHTML != "" && (i%4)!=1){
               var destination = i-1;
+              /* what is the base decision for moving an element to the left?
+               2 conditions must be met: first, the element doesn't cross its row over. In other words
+               if the element was in box 8 it can only move to 5,6,7
+                    1   2   3   4
+                    5   6   7   8     as you can see the 8 can only be shifted in this row when the left-arrow is clicked
+                    9   10  11  12    it shouldn't be able to move to the row above it or below it
+                    13  14  15  16
+               second the neightboring element shouldn't be filled, if it filled then we have different approach
+              */
               while(document.getElementById("box"+destination).innerHTML=="" && (destination%4)!=1 ){
                 destination = destination-1;
               }
@@ -215,8 +252,10 @@ export default {
               value_2 = 4;
             }
             document.getElementById("box"+location).innerHTML = value_2;
-            document.getElementById("box"+location).classList.add("num"+value_2);	
+            document.getElementById("box"+location).classList.add("num"+value_2);
+            	
           }
+          
         }else if(e.keyCode==38){
           // up arrow code
           var counter = 0;
@@ -419,9 +458,8 @@ export default {
           }
         }
       })
-
+      
     }
-
   },
   mounted: function(){
     this.running();
@@ -431,6 +469,12 @@ export default {
 </script>
 
 <style scoped>
+
+  .boxed{
+    	top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
   @media only screen and (min-width: 700px){
 
     .boxed {
@@ -438,8 +482,7 @@ export default {
       position: absolute;
       width: 400px;
       height: 400px;
-      top: 29%;
-      left: 37%;
+
       color: black;
       font-size: 3rem;
       text-align: center;
@@ -575,8 +618,7 @@ export default {
       position: absolute;
       width: 248px;
       height: 248px;
-      top: 29%;
-      left: 37%;
+
     }
     .innerBoxes{
       border: 1px solid green ;
@@ -621,8 +663,7 @@ export default {
       position: absolute;
       width: 150px;
       height: 150px;
-      top: 29%;
-      left: 15%;
+
     } 
   }
 </style>

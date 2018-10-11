@@ -54,6 +54,8 @@ export default {
       	window.addEventListener("keydown", function (e){
 			e.preventDefault();
 			if(e.keyCode==49){
+				// if the element has class unChangeable then that means it is one of the numbers that
+				// are provided by the game at start, those numbers shoudn't be edited
 				if(scope.activeElement.classList.contains("unChangeable")){
 					;
 				}else{
