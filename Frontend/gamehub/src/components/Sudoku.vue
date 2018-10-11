@@ -279,6 +279,8 @@ export default {
 			var seconds = parseInt(document.getElementById("seconds").innerHTML);
 			var minutes = parseInt(document.getElementById("minutes").innerHTML);
 			this.score = (seconds + (minutes*60));
+			var payload = { username: this.$store.getters.getusername, game: "twenty48", score: this.score };
+      		this.$store.commit("saveScore", payload);
 			alert("congratulations, you solved it in "+minutes+":"+seconds+" and your score is:"+this.score);
 		}
 	},

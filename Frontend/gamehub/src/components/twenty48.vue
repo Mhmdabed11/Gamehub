@@ -132,8 +132,8 @@ export default {
     },
     finish(){
       this.totalScore();
-      // var payload = { username: this., game: "2048", score: this.score };
-      // this.$store.commit("saveScore", payload);
+      var payload = { username: this.$store.getters.getusername, game: "twenty48", score: this.score };
+      this.$store.commit("saveScore", payload);
     },
     beginGame(){
       // need to randomly assign two blocks with values that are either 2 or 4
@@ -490,6 +490,7 @@ export default {
       left: 50%;
       transform: translate(-50%, -50%);
   }
+  
   @media only screen and (min-width: 700px){
 
     .boxed {
@@ -497,7 +498,6 @@ export default {
       position: absolute;
       width: 400px;
       height: 400px;
-
       color: black;
       font-size: 3rem;
       text-align: center;
@@ -514,6 +514,7 @@ export default {
       position: absolute;
       top: 0px;
       left: 0px;
+
     }
     #box2{
       position: absolute;
