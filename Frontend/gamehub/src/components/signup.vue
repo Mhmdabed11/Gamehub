@@ -1,15 +1,14 @@
 <template>
     <div >
-        <div class="login">
-            
-                <label for="username">Username</label><br>
-                <input type="text" v-model="username" name="username" placeholder="ex. Jon Doe" required> <br>
-                <label for="password">Password</label><br>
-                <input type="password" v-model="password" name="password" required>
-                <button class="btnlogin" v-on:click='signin' type="submit">Log in </button>
-                <p v-bind:class="{err:true, errshow:wrong}">Invalid Username or Password</p>
-                <p>Don't have an account?</p>
-                <button v-on:click="gotosignup">Register</button>
+        <div class="signup">
+           
+                <label for="username" >Username</label><br>
+                <input type="text" v-model="username" name="username" placeholder="ex. Jon Doe"><br>
+                <label for="password" >Password</label><br>
+                <input type="password" v-model="password" name="password"> <br>
+                <button class="btnsignup" v-on:click="signup"  type="submit">Sign up</button>
+                <p v-bind:class="{err:true, errshow:wrong}">User Already Exists</p>
+                <a class="terms">Terms and Conditions of Use</a>
            
         </div>
     </div>
@@ -18,7 +17,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "login",
+  name: "signup",
   data() {
     return {
       username: "",
@@ -27,15 +26,11 @@ export default {
     };
   },
   methods: {
-    gotosignup() {
-      this.$router.push({ name: "signup" });
-    },
-    signin() {
+    signup() {
       let ref = this;
-      console.log(this.username, this.password);
       axios({
         method: "post",
-        url: "http://localhost:8888/login",
+        url: "http://localhost:8888/signup",
         data: {
           username: this.username,
           password: this.password
@@ -45,9 +40,8 @@ export default {
         }
       })
         .then(function(response) {
-          if (response.status == 200) {
-            ref.$router.push({ name: "checkers" });
-          }
+          console.log(response);
+          ref.wrong = true;
         })
         .catch(function(error) {
           ref.wrong = false;
@@ -77,10 +71,11 @@ label {
   float: left;
   margin-left: 4%;
 }
-.login {
+
+.signup {
   background-color: rgb(239, 239, 239);
   width: 350px;
-  height: 380px;
+  height: 360px;
   margin-top: 10%;
   position: absolute;
   left: 50%;
@@ -106,7 +101,7 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
-.btnlogin {
+.btnsignup {
   width: 90%;
   background-color: #4caf50;
   color: white;
@@ -119,7 +114,7 @@ input[type="password"] {
   cursor: pointer;
 }
 
-.btnlogin:hover {
+.btnsignup:hover {
   background-color: #45a049;
 }
 </style>
