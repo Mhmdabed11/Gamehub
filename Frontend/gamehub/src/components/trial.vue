@@ -1,7 +1,7 @@
 <template>
   <div class="trial">
         {{msg}}
-        <table>
+        <table v-bind:id="'table'">
             <tr>
                 <th>Username</th>
                 <th colspan="2">Scores</th>
@@ -20,7 +20,7 @@ export default {
   data () {
     return {
     	msg: 'Welcome to YOUR DEATH',
-        game_scores: {game1:55, game2:66, game3:77},
+        game_scores: '',
         username: 'SooSoo',
 
     }
@@ -45,6 +45,7 @@ export default {
             
       },
       displayUserScores(body){
+          this.game_scores = body;
           console.log(body);
       },
 
@@ -56,12 +57,17 @@ export default {
 </script>
 
 <style scoped>
+#table{
+    display: block;
+ 	position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 table, tr, td,th{
     border: 2px solid black;
     border-collapse: collapse;
 }
 
-table {
-    width:25%;
-}
 </style>

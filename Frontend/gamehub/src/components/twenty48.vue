@@ -4,8 +4,8 @@
       <h1>{{ msg }}</h1>
       <div id="buttons_container">
         <button v-on:click="newGame()" id="new_btn">New Game</button>
-        <button v-on:click="checking()" id="finish_btn">FINISH</button>
-        <span>{{score}}</span>
+        <button v-on:click="finish()" id="finish_btn">FINISH</button>
+        <span v-bind:id="'scoreBox'">SCORE: {{score}}</span>
       </div>
 	  </div>
     <div class="boxed">
@@ -130,6 +130,11 @@ export default {
       }
       this.beginGame();
     },
+    finish(){
+      this.totalScore();
+      // var payload = { username: this., game: "2048", score: this.score };
+      // this.$store.commit("saveScore", payload);
+    },
     beginGame(){
       // need to randomly assign two blocks with values that are either 2 or 4
       // based on experience and trying the game, the value 2 has higher probability of 
@@ -165,19 +170,25 @@ export default {
 
     },
     totalScore(){
+      this.score = 0;
       for(var i=1; i<17; i++){
-        this.score = this.score + parseInt(document.getElementById("box"+i).innerHTML);
+        var htmlstring = document.getElementById("box"+i).innerHTML;
+        htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,'');
+        if(htmlstring ==''){
+          this.score = this.score;
+        }else{
+          this.score = this.score + parseInt(htmlstring);
+        }
       }
     },
     running(){ 
       let classes = ["num2048", "num10248", "num512", "num256", "num128", "num64", "num32", "num16", "num8", "num4", "num2"];
       window.addEventListener("keydown", function(e){
-        
         e.preventDefault();
         if(e.keyCode==37){
           // left arrow code pressed
           var counter = 0;
-          // we start from index 1. 
+          // we start from index 1 in the for-loop. 
           // NOT FROM 0
           for(var i=1; i<17; i++){
             // why there is (i%4)!=1 ?? because you are on the left arrow click
@@ -203,8 +214,11 @@ export default {
                 // storing the PREVIOUS value of the number that was in the box 
                 // because we will use this number to change the value of a class-list
                 var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
-
+                
                 document.getElementById("box"+destination).innerHTML = currentValue;
+                // giving a new class to the box that has been filled.
+                // classes take the form of "num####" where the #### represent the number
+                // the bigger the number the darker the background of the box tht is filled with the number 
                 document.getElementById("box"+destination).classList.add("num"+currentValue);
                 document.getElementById("box"+i).innerHTML = "";
                 document.getElementById("box"+i).classList.remove("num"+previousValue);
@@ -235,7 +249,8 @@ export default {
               document.getElementById("box"+i).classList.remove(...classes);
             }
           }
-
+          // if the counter is greater than 0 then we have had a valid movement. This means
+          // we are required to insert a new number into our game. As long as there is a spot 
           if(counter>0){
             // deciding the location of the newly inserted value in the 4 X 4 grid
             var random =  Math.random(); 
@@ -492,6 +507,7 @@ export default {
       border: 1px solid green;
       width: 100px;
       height: 100px;
+      border-radius: 9px;
     }
 
     #box1{
