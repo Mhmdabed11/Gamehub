@@ -19,7 +19,8 @@ export default {
   data() {
     return {
       color: "",
-      timer: 0
+      timer: 0,
+      score: 0
     };
   },
   methods: {
@@ -185,10 +186,14 @@ export default {
         that.color = "red";
       } else that.color = "blue";
       document.getElementsByClassName("win")[0].classList.remove("hide");
+      this.score=this.timer;
       clearInterval(inter);
+      var payload = { username: this.$store.getters.getusername, game: "Connect4", score: Math.floor(10000/this.score) };
+      this.$store.commit("saveScore", payload);
     },
     NewGame() {
       var that = this;
+      this.score=0;
       clearInterval(inter);
       for (var i = 0; i < 42; i++) {
         document.getElementsByClassName("dot")[i].classList.remove("red");
