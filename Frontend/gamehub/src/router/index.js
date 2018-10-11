@@ -12,15 +12,20 @@ import reversi from '@/components/ReversiGrid'
 import hangman from '@/components/hangman'
 import trial from '@/components/trial'
 import trial2 from '@/components/trial2'
+import login from '@/components/login'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'SignupForm',
       component: SignupForm
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
       path: '/LoginForm',
