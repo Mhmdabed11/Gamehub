@@ -37,14 +37,15 @@ module.exports = {
         });
     },
     getByGame: function (req, res, next) {
-        var game = req.params.game;
+        //var game = req.params.game;
+
 
         nano.view('scores', 'getByGame', {
             'key': username
         }).then((body) => {
             //console.log(body.rows[0].value)
             if (body.rows.length > 0) {
-                res.send(body.rows[0].value)
+                res.send(body.rows)
                 return next();
             } else {
                 req.userFound = false;
