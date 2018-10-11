@@ -7,7 +7,7 @@
       <button class="btn" v-on:click="playhard"> Play Hard </button>
 <br>
       <h1> Score: {{ score }} </h1> 
-      <button class="btn play" v-on:click="play"> Play! </button>
+      <button id="playbtn" class="btn play hidden" v-on:click="play"> Play! </button>
        <h1 id="remtime" class="hidden"> <span id="memotime"> {{ memotime }}</span><span id="playtime" class="hidden"> {{ playtime }}</span> SECONDS TO MEMORIZE THE PICS! </h1>
 
     <table id="table">
@@ -146,6 +146,9 @@ playeasy: function(){
     this.memotime=1;
     this.playtime=60;
     this.level="Easy";
+    var btn = document.getElementById("playbtn");
+    btn.classList.remove("hidden");
+
    
   },
    playmedium: function(){
@@ -156,6 +159,8 @@ playeasy: function(){
     this.memotime=5;
     this.playtime=60;
     this.level="Medium";
+    var btn = document.getElementById("playbtn");
+    btn.classList.remove("hidden");
 
   },
  playhard: function(){
@@ -165,6 +170,8 @@ playeasy: function(){
     this.memotime=5;
     this.playtime=60;
     this.level="Hard";
+    var btn = document.getElementById("playbtn");
+    btn.classList.remove("hidden");
   
   },
 playagain: function(){
