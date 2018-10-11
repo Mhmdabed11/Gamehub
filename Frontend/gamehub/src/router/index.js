@@ -13,24 +13,20 @@ import hangman from '@/components/hangman'
 import trial from '@/components/trial'
 import trial2 from '@/components/trial2'
 import login from '@/components/login'
+import signup from '@/components/signup'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
-      path: '/',
-      name: 'SignupForm',
-      component: SignupForm
-    },
-    {
       path: '/login',
       name: 'login',
       component: login
     },
     {
-      path: '/LoginForm',
-      name: 'LoginForm',
-      component: LoginForm
+      path: '/signup',
+      name: 'signup',
+      component: signup
     },
     {
       path: '/reversi',
