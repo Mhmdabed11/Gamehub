@@ -104,13 +104,13 @@ var starttime = setInterval(() => {
   }
 else{
     window.clearInterval(starttime)
+    this.clickcount=0;
     for(var i=0;i<this.array.length;i++)
       x[i].classList.add("hidden");
         this.remtime = setInterval(() => {
               timetoplay.classList.remove("hidden");
               var timetoplaytext = document.getElementById("remtime");
               timetoplaytext.innerHTML = timetoplay.innerHTML + ' SECONDS TO FINISH PLAYING' ;
-                this.clickcount=0;
                 if(this.playtime>0){
                   this.playtime--;
                 }
