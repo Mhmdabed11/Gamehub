@@ -25,7 +25,6 @@
     <label>Username</label>
     </div>
     
-<<<<<<< HEAD
     <button v-on:click="twozero" class="menubutton"> 2048 </button>
         <button v-on:click="hangman" class="menubutton"> hangman </button>
     <button v-on:click="checkers" class="menubutton"> Checkers </button>
@@ -46,39 +45,17 @@
     <button> Login </button>
     
 </div>
-=======
->>>>>>> 9fd88c4189e23ebfbd5c7ca5e5196e536961f01a
 </div>
 </template>
 
  <script>
 export default {
   data() {
-<<<<<<< HEAD
     return {};
   },
   methods: {
     twozero: function() {
       this.$router.push("/twenty48");
-=======
-  return{
-      images: [
-        require('@/assets/2048.png'),
-        require('@/assets/hangman.png'),
-        require('@/assets/checkers.jpeg'),
-        require('@/assets/connect4.jpeg'),
-        require('@/assets/logo.png'),
-        require('@/assets/minesweeper.png'),
-        require('@/assets/reversi.jpeg'),
-        require('@/assets/sudoku.jpeg')
-      ]
-        }
-},
-methods:{
-    twozero:function(){
-this.$router.push("/twenty48")
-
->>>>>>> 9fd88c4189e23ebfbd5c7ca5e5196e536961f01a
     },
     hangman: function() {
       this.$router.push("/hangman");
@@ -109,7 +86,6 @@ this.$router.push("/twenty48")
 </script>
 
 <style scoped>
-<<<<<<< HEAD
 #ban {
   width: 100%;
   height: 75px;
@@ -168,22 +144,4 @@ label {
 img {
   margin: 0px;
 }
-=======
-.menu{
-    position: relative;
-    top: -60px;
-}
-.image{width:90px;height:90px; display:inline-block;}
-div{
-    display: inline-block;
-}
-/* #ban{width:100%;height:75px;background-color:black;display:flex;flex-direction: row;justify-content:space-between;margin:0px;}
-input{height:30%;margin-top:20px;}
-label{margin-top:30px;color:white;}
-.menu{position:absolute;background-color:black;}
-.dropmenu:hover  .menu{display:flex;flex-direction: column;justify-content:space-between;}
-.menu:hover{display:flex;flex-direction: column;justify-content:space-between;}
-.dropbutton{height:50px;}
-img{margin:0px;} */
->>>>>>> 9fd88c4189e23ebfbd5c7ca5e5196e536961f01a
 </style>
