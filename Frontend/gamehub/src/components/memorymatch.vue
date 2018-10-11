@@ -266,7 +266,7 @@ correct: function(){
         
           if(this.level=="Hard"){
             console.log(this.picscount);
- if(this.picscount=="36"){
+          if(this.picscount=="36"){
              window.clearInterval(this.remtime)
             if(this.playtime <= 30)
             this.score=10;

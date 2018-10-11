@@ -2,39 +2,34 @@
 <div>
 
     <div class="menu">
-    <div> <img :src= 'images[0]' class="image" v-on:click="twozero" /><br><a> 2048 </a> </div>
-    <div> <img :src= 'images[1]' class="image" v-on:click="hangman" /> <br><a> Hangman </a> </div>
-    <div> <img :src= 'images[2]' class="image" v-on:click="checkers" />  <br><a> Checkers </a> </div>
-    <div> <img :src= 'images[3]' class="image" v-on:click="connect" /> <br><a> Connect </a> </div> 
-    <div> <img :src= 'images[4]' class="image" v-on:click="memory" />  <br><a> Memory Match </a> </div>
-    <div> <img :src= 'images[5]' class="image" v-on:click="mines" /> <br><a> Minesweeper </a> </div>
-    <!-- <img :src= 'images[]' class="image" v-on:click="puzzle" />   -->
-    <div> <img :src= 'images[6]' class="image" v-on:click="reversi" />  <br><a> Reversi </a> </div>
-    <div> <img :src= 'images[7]' class="image" v-on:click="sudoku" />  <br><a> Sudoku </a> </div>
+    <div class="pic"> <img :src= 'imagee[0]' class="img" v-on:click="twozero()" /><br><a class="a" id="2048"> 2048 </a> </div>
+    <div class="pic"> <img :src= 'imagee[1]' class="img" v-on:click="hangman()" /> <br><a class="a" id="hangman"> Hangman </a> </div>
+    <div class="pic"> <img :src= 'imagee[2]' class="img" v-on:click="checkers()" />  <br><a class="a" id="checkers"> Checkers </a> </div>
+    <div class="pic"> <img :src= 'imagee[3]' class="img" v-on:click="connect()" /> <br><a class="a" id="connect"> Connect </a> </div> 
+    <div class="pic"> <img :src= 'imagee[4]' class="img" v-on:click="memory()" />  <br><a class="a" id="memory"> Memory Match </a> </div>
+    <div class="pic"> <img :src= 'imagee[5]' class="img" v-on:click="mines()" /> <br><a class="a" id="mine"> Minesweeper </a> </div>
+    <!-- <img :src= 'imagee[]' class="img" v-on:click="puzzle" />   -->
+    <div class="pic"> <img :src= 'imagee[6]' class="img" v-on:click="reversi()" />  <br><a class="a" id="reversi"> Reversi </a> </div>
+    <div class="pic"> <img :src= 'imagee[7]' class="img" v-on:click="sudoku()" />  <br><a class="a" id="sudoku"> Sudoku </a> </div>
 
-
-    <!-- // <button v-on:click="twozero" class="menubutton">  </button>
-    // <button v-on:click="hangman" class="menubutton"> hangman </button>
-    // <button v-on:click="checkers" class="menubutton"> Checkers </button>
-    // <button v-on:click="connect" class="menubutton"> Connect 4 </button>
-    // <button v-on:click="memory" class="menubutton"> Memory </button>
-    // <button v-on:click="mines" class="menubutton"> Minesweeper </button>
-    // <button v-on:click="puzzle" class="menubutton"> Puzzle Slider </button>
-    // <button v-on:click="reversi" class="menubutton"> Reversi  </button>
-    // <button v-on:click="sudoku" class="menubutton"> Sudoku </button> -->
     <label>Username</label>
+    <button class="menubutton"> HighScores </button>
+    <button class="menubutton"> Signout </button>
+
     </div>
     
 </div>
 </template>
 
  <script>
+     var a = document.getElementById("2048");
+
  export default {
 
 
   data() {
   return{
-      images: [
+      imagee: [
         require('@/assets/2048.png'),
         require('@/assets/hangman.png'),
         require('@/assets/checkers.jpeg'),
@@ -47,40 +42,72 @@
         }
 },
 methods:{
+    clickedpic: function(){
+    var pic = document.getElementsByClassName("a");
+    for(var i=0;i<this.imagee.length;i++)
+    if(pic[i].classList.contains("clicked"))
+    pic[i].classList.remove("clicked")
+    },
     twozero:function(){
-this.$router.push("/twenty48")
-
+    this.$router.push("/twenty48")
+    var a = document.getElementById("2048");
+    this.clickedpic();
+    a.classList.add("clicked");
     },
     hangman:function(){
-this.$router.push("/hangman")
+    this.$router.push("/hangman")
+    var a = document.getElementById("hangman");
+    this.clickedpic();
+    a.classList.add("clicked");
 
     },
      reversi:function(){
-this.$router.push("/reversi")
+    this.$router.push("/reversi")
+    var a = document.getElementById("reversi");
+    this.clickedpic();
+    a.classList.add("clicked");
 
     },
      memory:function(){
-this.$router.push("/memory")
+    this.$router.push("/memory")
+    var a = document.getElementById("memory");
+    this.clickedpic();
+    a.classList.add("clicked");
 
     },
      checkers:function(){
-this.$router.push("/checkers")
+    this.$router.push("/checkers")
+    var a = document.getElementById("checkers");
+    this.clickedpic();
+    a.classList.add("clicked");
 
     },
      puzzle:function(){
-this.$router.push("/puzzleslider")
+    this.$router.push("/puzzleslider")
+    // var a = document.getElementById("puzzle");
+    // this.clickedpic();
+    // a.classList.add("clicked");
 
     },
      sudoku:function(){
-this.$router.push("/sudoku")
+    this.$router.push("/sudoku")
+    var a = document.getElementById("sudoku");
+    this.clickedpic();
+    a.classList.add("clicked");
 
     },
      connect:function(){
-this.$router.push("/connect4")
+    this.$router.push("/connect4")
+    var a = document.getElementById("connect");
+    this.clickedpic();
+    a.classList.add("clicked");
 
     },
      mines:function(){
-this.$router.push("/minesweeper")
+    this.$router.push("/minesweeper")
+    var a = document.getElementById("mine");
+    this.clickedpic();
+    a.classList.add("clicked");
 
     },
 
@@ -91,9 +118,16 @@ this.$router.push("/minesweeper")
 <style scoped>
 .menu{
     position: relative;
-    top: -60px;
+    top: -50px;
 }
-.image{width:90px;height:90px; display:inline-block;}
+.clicked{
+    color:red;
+}
+.pic:hover{
+    cursor:pointer;
+
+}
+.img{width:90px;height:90px; display:inline-block;}
 div{
     display: inline-block;
 }
