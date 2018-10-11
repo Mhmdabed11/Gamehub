@@ -130,82 +130,104 @@ export default {
   },
   methods:{
     displayGameScores(data){
-      for(var i=0 ; i<data.length; i++) {
-        var usern=data[i][1];
-        var score=data[i][0];
+      for(var i=0 ; i<data['value'].length; i++) {
+        var usern=data['value'][i][1];
+        var score=data['value'][i][0];
         this.game_scores.push(score);
         this.users_scores.push(usern);
       }
     },
     displayTwentyScores(data){
-      for(var i=0 ; i<data.length; i++) {
-        var usern=data[i][1];
-        var score=data[i][0];
+      for(var i=0 ; i<data['value'].length; i++) {
+        var usern=data['value'][i][1];
+        var score=data['value'][i][0];
         this.twenty_scores.push(score);
         this.users2_scores.push(usern);
       }
     },
     displayHangmanScores(data){
-      for(var i=0 ; i<data.length; i++) {
-        var usern=data[i][1];
-        var score=data[i][0];
+      for(var i=0 ; i<data['value'].length; i++) {
+        var usern=data['value'][i][1];
+        var score=data['value'][i][0];
         this.hangman_scores.push(score);
         this.users3_scores.push(usern);
       }
     },
     displayCheckersScores(data){
-      for(var i=0 ; i<data.length; i++) {
-        var usern=data[i][1];
-        var score=data[i][0];
+      for(var i=0 ; i<data['value'].length; i++) {
+        var usern=data['value'][i][1];
+        var score=data['value'][i][0];
         this.checkers_scores.push(score);
         this.users4_scores.push(usern);
       }
     },
     displayConnectScores(data){
-      for(var i=0 ; i<data.length; i++) {
-        var usern=data[i][1];
-        var score=data[i][0];
+      for(var i=0 ; i<data['value'].length; i++) {
+        var usern=data['value'][i][1];
+        var score=data['value'][i][0];
         this.connect4_scores.push(score);
         this.users5_scores.push(usern);
       }
     },
     displayMemoryScores(data){
-      for(var i=0 ; i<data.length; i++) {
-        var usern=data[i][1];
-        var score=data[i][0];
+      for(var i=0 ; i<data['value'].length; i++) {
+        var usern=data['value'][i][1];
+        var score=data['value'][i][0];
         this.memory_scores.push(score);
         this.users6_scores.push(usern);
       }
     },
     displayMineScores(data){
-      for(var i=0 ; i<data.length; i++) {
-        var usern=data[i][1];
-        var score=data[i][0];
+      for(var i=0 ; i<data['value'].length; i++) {
+        var usern=data['value'][i][1];
+        var score=data['value'][i][0];
         this.minesweeper_scores.push(score);
         this.users7_scores.push(usern);
       }
     },
     displayPuzzleScores(data){
-      for(var i=0 ; i<data.length; i++) {
-        var usern=data[i][1];
-        var score=data[i][0];
+      for(var i=0 ; i<data['value'].length; i++) {
+        var usern=data['value'][i][1];
+        var score=data['value'][i][0];
         this.puzzle_scores.push(score);
         this.users8_scores.push(usern);
       }
     },
     displayReversiScores(data){
-      for(var i=0 ; i<data.length; i++) {
-        var usern=data[i][1];
-        var score=data[i][0];
+      for(var i=0 ; i<data['value'].length; i++) {
+        var usern=data['value'][i][1];
+        var score=data['value'][i][0];
         this.reversi_scores.push(score);
         this.users9_scores.push(usern);
       }
+    },
+    checkkey(y) {
+        var that=this;
+        for(var i=0 ; i<y.length ;i++) {
+            if(y[i]['key'] == 'sudoku')
+                that.displayGameScores(y[i]);
+                else if(y[i]['key'] =='2048')
+                    that.displayTwentyScores(y[i]);
+                    else if(y[i]['key']=='hangman')
+                        that.displayHangmanScores(y[i]);
+                        else if(y[i]['key']=='checkers')
+                        that.displayCheckersScores(y[i]);
+                            else if(y[i]['key']=='connect4')
+                            that.displayConnectScores(y[i]);
+                                else if(y[i]['key']=='memory')
+                                that.displayMemoryScores(y[i]);
+                                    else if(y[i]['key']=='minesweeper')
+                                    that.displayMineScores(y[i]);
+                                        else if(y[i]['key']=='puzzleslider')
+                                        that.displayPuzzleScores(y[i]);
+                                            else if(y[i]['key']=='reversi')
+                                            that.displayReversiScores(y[i]);
+        }
     }
 
   },
   mounted: function(){
     var that=this;
-    for(var i=0 ; i < this.games.length; i ++) {
     var http = new XMLHttpRequest();
     var url = 'http://localhost:8888/getScoresByGame/';
     http.open('GET', url, true);
@@ -213,28 +235,10 @@ export default {
     http.onreadystatechange = function() {//Call a function when the state changes.
       if(http.readyState == 4 && http.status == 200) {
         var y=JSON.parse(http.responseText);
-        if(i ==0) 
-        that.displayGameScores(y);
-        else if(i ==1)
-        that.displayTwentyScores(y);
-        else if(i==2)
-        that.displayHangmanScores(y);
-        else if(i==3)
-        that.displayCheckersScores(y);
-        else if(i==4)
-        that.displayConnectScores(y);
-        else if(i==5)
-        that.displayMemoryScores(y);
-        else if(i==6)
-        that.displayMineScores(y);
-        else if(i==7)
-        that.displayPuzzleScores(y);
-        else 
-        that.displayReversiScores(y);
+        that.checkkey(y);
       }	    
     }
     http.send(null);
-    }
   },
 }
 </script>
@@ -247,7 +251,6 @@ table, tr, td,th{
 
 table {
     width:25%;
-    float:left;
 }
 
 </style>
