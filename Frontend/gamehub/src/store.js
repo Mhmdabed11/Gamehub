@@ -18,9 +18,13 @@ export default new Vuex.Store({
     j4: "",
     previ: "",
     prevj: "",
-    color: ""
+    color: "",
+    username: ""
   },
   getters: {
+    getusername(state) {
+      return state.username;
+    },
     geti(state) {
       return state.i;
     },
@@ -62,6 +66,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setusername(state, payload) {
+      state.username = payload;
+    },
     seti(state, payload) {
       state.i = payload;
     },

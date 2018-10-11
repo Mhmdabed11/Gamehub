@@ -46,6 +46,7 @@ export default {
       })
         .then(function(response) {
           if (response.status == 200) {
+            ref.$store.commit("setusername", ref.username);
             ref.$router.push({ name: "checkers" });
           }
         })
