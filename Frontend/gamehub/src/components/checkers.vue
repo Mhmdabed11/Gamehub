@@ -631,8 +631,6 @@ export default {
     },
 
     alertme(e, itr, itr3) {
-      var payload = { username: "mhmd", game: "2048", score: "905846" };
-      // this.$store.commit("saveScore", payload);
       console.log(itr, itr3);
       if (this.matrix[itr][itr3].classList.contains("highlighted") == false) {
         for (let i in this.selectedarray) {
@@ -1141,6 +1139,7 @@ export default {
       }
       this.checkred();
       if (this.checkred() == false) {
+        var ref = this;
         var blacktokens = 0;
         for (let i = 0; i < 8; i++) {
           for (let j = 0; j < 8; j++) {
@@ -1155,10 +1154,17 @@ export default {
           }
         }
         this.blacktokens = blacktokens;
-        alert("Game over, Red player loses!" + blacktokens);
+        var payload = {
+          username: ref.$store.getters.getusername,
+          game: "Checkers",
+          score: blacktokens
+        };
+        this.$store.commit("saveScore", payload);
+        alert("Game over, Red player loses!");
       }
       this.checkblack();
       if (this.checkblack() == false) {
+        var ref = this;
         var redtokens = 0;
 
         for (let i = 0; i < 8; i++) {
@@ -1173,7 +1179,13 @@ export default {
           }
         }
         this.redtokens = redtokens;
-        alert("Game over, Black player loses!" + redtokens);
+        var payload = {
+          username: ref.$store.getters.getusername,
+          game: "Checkers",
+          score: redtokens
+        };
+        this.$store.commit("saveScore", payload);
+        alert("Game over, Black player loses!");
       }
     }
   },
