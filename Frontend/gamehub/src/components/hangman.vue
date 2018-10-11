@@ -137,6 +137,8 @@ top.remove("r")
                         gameover=true;
                         window.clearInterval(interx);
                         document.getElementsByClassName("res")[0].classList.add("g");
+                        var payload = { username: this.$store.getters.getusername, game: "hangman", score: Math.floor(10000/this.timepass) };
+                        this.$store.commit("saveScore", payload);
                         this.newgame=true;
                     }
                 }else{
