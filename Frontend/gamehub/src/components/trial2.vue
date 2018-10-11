@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table>
+      <table>
             <tr>
                 <th>{{games[0]}}</th>
                 <th colspan="2">Scores</th>
@@ -106,7 +106,7 @@
 export default {
   data () {
     return {
-      games: ['sudoku','2048','hangman','checkers','connect4','memory','minesweeper','puzzleslider','reversi'],
+      games: ['Sudoku','2048','Hangman','Checkers','Connect4','Memory','Minesweeper','Puzzleslider','Reversi'],
       game_scores: [],
       users_scores: [],
       twenty_scores: [],
@@ -204,23 +204,23 @@ export default {
     checkkey(y) {
         var that=this;
         for(var i=0 ; i<y.length ;i++) {
-            if(y[i]['key'] == 'sudoku')
+            if(y[i]['key'] == 'Sudoku')
                 that.displayGameScores(y[i]);
-                else if(y[i]['key'] =='2048')
+                else if(y[i]['key'] =='twenty48')
                     that.displayTwentyScores(y[i]);
                     else if(y[i]['key']=='hangman')
                         that.displayHangmanScores(y[i]);
                         else if(y[i]['key']=='checkers')
                         that.displayCheckersScores(y[i]);
-                            else if(y[i]['key']=='connect4')
+                            else if(y[i]['key']=='Connect4')
                             that.displayConnectScores(y[i]);
-                                else if(y[i]['key']=='memory')
+                                else if(y[i]['key']=='memorymatch')
                                 that.displayMemoryScores(y[i]);
-                                    else if(y[i]['key']=='minesweeper')
+                                    else if(y[i]['key']=='mine')
                                     that.displayMineScores(y[i]);
                                         else if(y[i]['key']=='puzzleslider')
                                         that.displayPuzzleScores(y[i]);
-                                            else if(y[i]['key']=='reversi')
+                                            else if(y[i]['key']=='ReversiGrid')
                                             that.displayReversiScores(y[i]);
         }
     }
