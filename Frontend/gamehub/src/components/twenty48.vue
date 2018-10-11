@@ -1,5 +1,13 @@
 <template>
   <div>
+    <div class="header">
+      <h1>{{ msg }}</h1>
+      <div id="buttons_container">
+        <button v-on:click="newGame()" id="new_btn">New Game</button>
+        <button v-on:click="finish()" id="finish_btn">FINISH</button>
+        <span v-bind:id="'scoreBox'">SCORE: {{score}}</span>
+      </div>
+	  </div>
     <div class="boxed">
       <div v-for="i in 16" v-bind:id="'box'+i" class="innerBoxes"></div>
     </div >
@@ -12,6 +20,7 @@ export default {
     return {
     	msg: 'Welcome to 2048',
       values: [2, 4],
+      score: 0,
 
     }
   },
@@ -113,6 +122,19 @@ export default {
           break;		
       }
     },
+    newGame(){
+      let classes = ["num2048", "num10248", "num512", "num256", "num128", "num64", "num32", "num16", "num8", "num4", "num2", "num"];
+      for(var i=1; i<17; i++){
+        document.getElementById("box"+i).innerHTML="";
+        document.getElementById("box"+i).classList.remove(...classes);
+      }
+      this.beginGame();
+    },
+    finish(){
+      this.totalScore();
+      // var payload = { username: this., game: "2048", score: this.score };
+      // this.$store.commit("saveScore", payload);
+    },
     beginGame(){
       // need to randomly assign two blocks with values that are either 2 or 4
       // based on experience and trying the game, the value 2 has higher probability of 
@@ -147,16 +169,42 @@ export default {
       this.printValues(value_2, x2, y2);
 
     },
+    totalScore(){
+      this.score = 0;
+      for(var i=1; i<17; i++){
+        var htmlstring = document.getElementById("box"+i).innerHTML;
+        htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,'');
+        if(htmlstring ==''){
+          this.score = this.score;
+        }else{
+          this.score = this.score + parseInt(htmlstring);
+        }
+      }
+    },
     running(){ 
       let classes = ["num2048", "num10248", "num512", "num256", "num128", "num64", "num32", "num16", "num8", "num4", "num2"];
       window.addEventListener("keydown", function(e){
         e.preventDefault();
         if(e.keyCode==37){
-          // left arrow code
+          // left arrow code pressed
           var counter = 0;
+          // we start from index 1 in the for-loop. 
+          // NOT FROM 0
           for(var i=1; i<17; i++){
+            // why there is (i%4)!=1 ?? because you are on the left arrow click
+            // then you don't to adjust the column on the most left. This column can't 
+            // be moved further.    
             if(document.getElementById("box"+i).innerHTML != "" && (i%4)!=1){
               var destination = i-1;
+              /* what is the base decision for moving an element to the left?
+               2 conditions must be met: first, the element doesn't cross its row over. In other words
+               if the element was in box 8 it can only move to 5,6,7
+                    1   2   3   4
+                    5   6   7   8     as you can see the 8 can only be shifted in this row when the left-arrow is clicked
+                    9   10  11  12    it shouldn't be able to move to the row above it or below it
+                    13  14  15  16
+               second the neightboring element shouldn't be filled, if it filled then we have different approach
+              */
               while(document.getElementById("box"+destination).innerHTML=="" && (destination%4)!=1 ){
                 destination = destination-1;
               }
@@ -166,8 +214,11 @@ export default {
                 // storing the PREVIOUS value of the number that was in the box 
                 // because we will use this number to change the value of a class-list
                 var previousValue = parseInt(document.getElementById("box"+i).innerHTML);
-
+                
                 document.getElementById("box"+destination).innerHTML = currentValue;
+                // giving a new class to the box that has been filled.
+                // classes take the form of "num####" where the #### represent the number
+                // the bigger the number the darker the background of the box tht is filled with the number 
                 document.getElementById("box"+destination).classList.add("num"+currentValue);
                 document.getElementById("box"+i).innerHTML = "";
                 document.getElementById("box"+i).classList.remove("num"+previousValue);
@@ -198,7 +249,8 @@ export default {
               document.getElementById("box"+i).classList.remove(...classes);
             }
           }
-
+          // if the counter is greater than 0 then we have had a valid movement. This means
+          // we are required to insert a new number into our game. As long as there is a spot 
           if(counter>0){
             // deciding the location of the newly inserted value in the 4 X 4 grid
             var random =  Math.random(); 
@@ -215,8 +267,10 @@ export default {
               value_2 = 4;
             }
             document.getElementById("box"+location).innerHTML = value_2;
-            document.getElementById("box"+location).classList.add("num"+value_2);	
+            document.getElementById("box"+location).classList.add("num"+value_2);
+            	
           }
+          
         }else if(e.keyCode==38){
           // up arrow code
           var counter = 0;
@@ -419,9 +473,8 @@ export default {
           }
         }
       })
-
+      
     }
-
   },
   mounted: function(){
     this.running();
@@ -431,6 +484,12 @@ export default {
 </script>
 
 <style scoped>
+
+  .boxed{
+    	top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
   @media only screen and (min-width: 700px){
 
     .boxed {
@@ -438,8 +497,7 @@ export default {
       position: absolute;
       width: 400px;
       height: 400px;
-      top: 29%;
-      left: 37%;
+
       color: black;
       font-size: 3rem;
       text-align: center;
@@ -449,6 +507,7 @@ export default {
       border: 1px solid green;
       width: 100px;
       height: 100px;
+      border-radius: 9px;
     }
 
     #box1{
@@ -575,8 +634,7 @@ export default {
       position: absolute;
       width: 248px;
       height: 248px;
-      top: 29%;
-      left: 37%;
+
     }
     .innerBoxes{
       border: 1px solid green ;
@@ -621,8 +679,7 @@ export default {
       position: absolute;
       width: 150px;
       height: 150px;
-      top: 29%;
-      left: 15%;
+
     } 
   }
 </style>
