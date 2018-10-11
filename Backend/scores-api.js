@@ -40,7 +40,7 @@ module.exports = {
         var game = req.params.game;
 
         nano.view('scores', 'getByGame', {
-            'key': game
+            'key': username
         }).then((body) => {
             //console.log(body.rows[0].value)
             if (body.rows.length > 0) {
