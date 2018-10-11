@@ -11,7 +11,7 @@ import memory from '@/components/memorymatch'
 import reversi from '@/components/ReversiGrid'
 import hangman from '@/components/hangman'
 import trial from '@/components/trial'
-import trial2 from '@/components/trial2'
+import trial3 from '@/components/trial3'
 import login from '@/components/login'
 import signup from '@/components/signup'
 
@@ -74,9 +74,9 @@ export default new Router({
       component: trial
     },
     {
-      path: '/trial2',
-      name: 'trail2',
-      component: trial2
+      path: '/trial3',
+      name: 'trail3',
+      component: trial3
     }
   ]
 })
