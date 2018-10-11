@@ -1235,7 +1235,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
