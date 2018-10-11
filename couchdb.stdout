@@ -172,3 +172,6 @@ Apache CouchDB has started. Time to relax.
 [info] [<0.365.0>] Starting index update for db: gamehub-db idx: _design/scores
 [info] [<0.365.0>] Index update finished for db: gamehub-db idx: _design/scores
 [info] [<0.134.0>] 127.0.0.1 - - GET /gamehub-db/_design/scores/_view/getByGame?group=true 200
+[info] [<0.565.0>] Starting index update for db: gamehub-db idx: _design/users
+[info] [<0.565.0>] Index update finished for db: gamehub-db idx: _design/users
+[info] [<0.559.0>] 127.0.0.1 - - GET /gamehub-db/_design/users/_view/getByUsername?key=%22Mohammad%22&include_docs=true 200

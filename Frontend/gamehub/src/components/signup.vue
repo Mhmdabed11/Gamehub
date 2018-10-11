@@ -9,6 +9,8 @@
                 <button class="btnsignup" v-on:click="signup"  type="submit">Sign up</button>
                 <p v-bind:class="{err:true, errshow:wrong}">User Already Exists</p>
                 <a class="terms">Terms and Conditions of Use</a>
+                <br>
+                <a href="#/login">Log in</a>
            
         </div>
     </div>
@@ -76,7 +78,7 @@ label {
 .signup {
   background-color: rgb(239, 239, 239);
   width: 350px;
-  height: 360px;
+  height: 375px;
   margin-top: 10%;
   position: absolute;
   left: 50%;
