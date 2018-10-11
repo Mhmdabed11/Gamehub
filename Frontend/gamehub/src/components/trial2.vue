@@ -207,7 +207,7 @@ export default {
     var that=this;
     for(var i=0 ; i < this.games.length; i ++) {
     var http = new XMLHttpRequest();
-    var url = 'http://localhost:8888/getScoresByGame/'+this.games[i];
+    var url = 'http://localhost:8888/getScoresByGame/';
     http.open('GET', url, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     http.onreadystatechange = function() {//Call a function when the state changes.
