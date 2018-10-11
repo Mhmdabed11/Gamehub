@@ -38,8 +38,14 @@ module.exports = {
     getByGame: function (req, res, next) {
         //var game = req.params.game;
 
+<<<<<<< HEAD
         nano.view('scores', 'getByGame', {
             group: true
+=======
+
+        nano.view('scores', 'getByGame', {
+            'key': username
+>>>>>>> 825449042ce9ceee76f0e994eb85ec14529aa0f7
         }).then((body) => {
             //console.log(body.rows[0].value)
             if (body.rows.length > 0) {
