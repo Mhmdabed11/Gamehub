@@ -3,7 +3,6 @@ var nano = require('nano')('http://localhost:5984/gamehub-db');
 
 module.exports = {
     saveScore: function (req, res, next) {
-
         req.body = JSON.parse(req.body);
         var username = req.body.username;
         var game = req.body.game;
