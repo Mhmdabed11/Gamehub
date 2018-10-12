@@ -2,21 +2,21 @@
 <div>
 
     <div class="menu">
-    <div class="pic"> <img :src= 'imagee[0]' class="img" v-on:click="twozero()" /><br><a class="a" id="2048"> 2048 </a> </div>
-    <div class="pic"> <img :src= 'imagee[1]' class="img" v-on:click="hangman()" /> <br><a class="a" id="hangman"> Hangman </a> </div>
-    <div class="pic"> <img :src= 'imagee[2]' class="img" v-on:click="checkers()" />  <br><a class="a" id="checkers"> Checkers </a> </div>
-    <div class="pic"> <img :src= 'imagee[3]' class="img" v-on:click="connect()" /> <br><a class="a" id="connect"> Connect </a> </div> 
-    <div class="pic"> <img :src= 'imagee[4]' class="img" v-on:click="memory()" />  <br><a class="a" id="memory"> Memory Match </a> </div>
-    <div class="pic"> <img :src= 'imagee[5]' class="img" v-on:click="mines()" /> <br><a class="a" id="mine"> Minesweeper </a> </div>
+    <div v-bind:class="{active:!this.$store.getters.getsignedin}" class="pic"> <img :src= 'imagee[0]' class="img" v-on:click="twozero()" /><br><a class="a" id="2048"> 2048 </a> </div>
+    <div v-bind:class="{active:!this.$store.getters.getsignedin}" class="pic"> <img :src= 'imagee[1]' class="img" v-on:click="hangman()" /> <br><a class="a" id="hangman"> Hangman </a> </div>
+    <div v-bind:class="{active:!this.$store.getters.getsignedin}" class="pic"> <img :src= 'imagee[2]' class="img" v-on:click="checkers()" />  <br><a class="a" id="checkers"> Checkers </a> </div>
+    <div v-bind:class="{active:!this.$store.getters.getsignedin}" class="pic"> <img :src= 'imagee[3]' class="img" v-on:click="connect()" /> <br><a class="a" id="connect"> Connect </a> </div> 
+    <div v-bind:class="{active:!this.$store.getters.getsignedin}" class="pic"> <img :src= 'imagee[4]' class="img" v-on:click="memory()" />  <br><a class="a" id="memory"> Memory Match </a> </div>
+    <div  v-bind:class="{active:!this.$store.getters.getsignedin}" class="pic"> <img :src= 'imagee[5]' class="img" v-on:click="mines()" /> <br><a class="a" id="mine"> Minesweeper </a> </div>
     <!-- <img :src= 'imagee[]' class="img" v-on:click="puzzle" />   -->
-    <div class="pic"> <img :src= 'imagee[6]' class="img" v-on:click="reversi()" />  <br><a class="a" id="reversi"> Reversi </a> </div>
-    <div class="pic"> <img :src= 'imagee[7]' class="img" v-on:click="sudoku()" />  <br><a class="a" id="sudoku"> Sudoku </a> </div>
+    <div v-bind:class="{active:!this.$store.getters.getsignedin}" class="pic"> <img :src= 'imagee[6]' class="img" v-on:click="reversi()" />  <br><a class="a" id="reversi"> Reversi </a> </div>
+    <div v-bind:class="{active:!this.$store.getters.getsignedin}" class="pic"> <img :src= 'imagee[7]' class="img" v-on:click="sudoku()" />  <br><a class="a" id="sudoku"> Sudoku </a> </div>
   
      <div class="datawrapper">
         
     <div class="username">{{this.$store.getters.getusername}} </div>
     <div> <button class="btnsignout" v-on:click="signout"> Signout </button> </div>
-    <li> <div class="dropdown">
+  <div class="dropdown">
         <button class="data hsbtn"> HighScores 
         <div class="dropdown-content"> 
             <a class="item"> My HighScores</a> 
@@ -24,8 +24,7 @@
         </div>
         </button>
     </div>
-    </li>
-   
+  
     </div>
 
      
@@ -53,7 +52,6 @@ export default {
   },
   methods: {
     signout() {
-      alert(this.$store.getters.getsignedin);
       this.$store.commit("setsignedin", false);
       this.$store.commit("setusername", "");
       this.$router.push({ name: "login" });
@@ -146,6 +144,9 @@ export default {
   height: 90px;
   display: inline-block;
 }
+.active {
+  pointer-events: none;
+}
 .pic {
   display: inline-block;
 }
@@ -158,11 +159,10 @@ div {
 }
 .datawrapper {
   display: inline-block;
-  height: 90px;
+  height: 80px;
   width: 90px;
-  position: absolute;
-  top: 0px;
-  margin-left: 1%;
+  margin-left: 0%;
+  top: 0;
 }
 .data {
   position: relative;
@@ -213,7 +213,7 @@ ul {
   background-color: red; /* Green */
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 5px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -222,6 +222,7 @@ ul {
   cursor: pointer;
   position: relative;
   width: 160px;
+
   margin-top: 20%;
 }
 .dropdown:hover .dropdown-content {
@@ -232,8 +233,11 @@ ul {
   height: 18px;
   display: block;
 }
+
 .username {
   margin-left: 40%;
+  background-color: black;
+  color: white;
 }
 
 /* #ban{width:100%;height:75px;background-color:black;display:flex;flex-direction: row;justify-content:space-between;margin:0px;}
