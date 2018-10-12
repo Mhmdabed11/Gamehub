@@ -1,6 +1,6 @@
 # Gamehub
-A SPA with 7 games to choose from. Play and beat your highscore. Enjoy !! =))
-#Installation
+A SPA with 7 games to choose from. Play and beat your highscore. Enjoy !! =)) <br>
+<h1>Insrtallation</h1> <br>
 Download Node js from the link below:<br>
 https://nodejs.org/en/download/<br>
 Npm will be installed automatically with node.<br>
