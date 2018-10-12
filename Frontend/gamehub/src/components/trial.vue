@@ -7,7 +7,7 @@
                 <th colspan="2">Scores</th>
             </tr>
             <tr v-for="(score, game) in game_scores">
-                <td>Soosoo</td>
+                <td>{{username}}</td>
                 <td>{{game}}</td>
                 <td>{{score}}</td>
             </tr>
