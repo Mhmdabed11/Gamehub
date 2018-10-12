@@ -1,16 +1,17 @@
 <template>
     <div>
-        <button v-on:click="start">Start</button>
-<table v-for="i in size" :key="i">  
+<div class="wrapper">
+<table v-for="i in sizearray.length" :key="i">  
     <tr>     
-        <td  colspan="2">{{x[i-1]["key"]}}</td>
+        <td  colspan="2" class="toprow">{{gamename[i-1]}}</td>
     </tr>
     
     <tr v-for="j in sizearray[i-1]" :key="j">
-        <td>{{x[i-1]["value"][j-1][1]}}</td>
+        <td class="secondrow"><img :src="imgsource[j-1]" class="medal">{{x[i-1]["value"][j-1][1]}}</td>
         <td>{{x[i-1]["value"][j-1][0]}}</td>
     </tr>
 </table>
+</div>
         </div>
 </template>
 
@@ -20,10 +21,17 @@ export default {
     return {
 x:"",
 size:0,
-sizearray:[]
+sizearray:[],
+imgsource:[require("../assets/gol.png"),require("../assets/slv.png"),require("../assets/brnz.png"),require("../assets/others.png"),require("../assets/others.png")],
+gamename:[]
     }
   },
   methods:{start:function(){
+
+  }
+
+    },
+      mounted: function(){
     var that=this;
     var http = new XMLHttpRequest();
     var url = 'http://localhost:8888/getScoresByGame/';
@@ -35,21 +43,23 @@ sizearray:[]
          that.x.push("")
        that.size=that.x.length;
        for (var m=0;m<that.size-1;m++)
-       {that.sizearray.push(that.x[m]["value"].length)}
-       console.log(that.sizearray);
+       {that.sizearray.push(that.x[m]["value"].length)
+           that.gamename.push(that.x[m]["key"].toUpperCase())}
       }	    
     }
     http.send(null);
 
   }
-
-    },
-      mounted: function(){
-
-  }
 }
 </script>
 <style scoped>
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-auto-columns: auto;
+}
 table {
     border-collapse: collapse;
     margin-bottom:20px;
@@ -58,5 +68,8 @@ table {
 table, th, td {
     border: 1px solid grey;
 }
-td{width:100px;height:50px;}
+td{width:200px;height:10px;}
+.toprow{font-size: 35px;color: black;font-weight: bold }
+.medal{height:30px;width:20px;}
+.secondrow{text-align: left;font-size: 20px;color: black}
 </style>

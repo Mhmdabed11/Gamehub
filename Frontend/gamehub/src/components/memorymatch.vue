@@ -244,6 +244,8 @@ correct: function(){
             this.score=50;
             
               timetoplaytext.innerHTML = 'YOU WON with ' + this.score + ' !';
+              var payload = { username: this.$store.getters.getusername, game: "memorymatch", score: this.score };
+              this.$store.commit("saveScore", payload);
               playagain.classList.remove("hidden");
 
           }
@@ -258,6 +260,8 @@ correct: function(){
             this.score=50;
             
               timetoplaytext.innerHTML = 'YOU WON with ' + this.score + ' !';
+              var payload = { username: this.$store.getters.getusername, game: "memorymatch", score: this.score };
+              this.$store.commit("saveScore", payload);
               playagain.classList.remove("hidden");
 
           
@@ -276,6 +280,8 @@ correct: function(){
             this.score=50;
             
               timetoplaytext.innerHTML = 'YOU WON with ' + this.score + ' !';
+              var payload = { username: this.$store.getters.getusername, game: "memorymatch", score: this.score };
+              this.$store.commit("saveScore", payload);
               playagain.classList.remove("hidden");
               
           }
