@@ -64,12 +64,12 @@
         for(var i=0;i<8;i++){
           for(var j=0;j<8;j++){
             if(this.isValid(this.currentPlayer, i, j)){
-              return true;
+              return false;
             }
           }
         }
 
-        return false;
+        return true;
       },
       isOnGrid(x, y) {
         return x >= 0 && x <= 7 && y >= 0 && y <= 7;
@@ -151,7 +151,7 @@
           alert("Game Over");
           
           var payload = {
-            username: this.$stores.getters.getUsername,
+            username: this.$store.getters.getUsername,
             game: "reversi",
             score: this.scores[this.startingPlayer]
           };
