@@ -210,7 +210,7 @@ ul {
   display: block;
 }
 .hsbtn {
-  background-color: red; /* Green */
+  background-color: blue; /* Green */
   border: none;
   color: white;
   padding: 5px 32px;
