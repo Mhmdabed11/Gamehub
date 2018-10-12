@@ -6,7 +6,7 @@ import mines from '@/components/mine'
 import checkers from '@/components/checkers'
 import sudoku from '@/components/Sudoku'
 import twenty from '@/components/twenty48'
-import connect from '@/components/connect4'
+import connect from '@/components/Connect4'
 import memory from '@/components/memorymatch'
 import reversi from '@/components/ReversiGrid'
 import hangman from '@/components/hangman'
@@ -14,6 +14,7 @@ import trial from '@/components/trial'
 import trial3 from '@/components/trial3'
 import login from '@/components/login'
 import signup from '@/components/signup'
+import welcome from '@/components/welcome'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/welcome',
+      name: 'welcome',
+      component: welcome
     },
     {
       path: '/signup',

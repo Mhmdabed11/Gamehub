@@ -19,9 +19,13 @@ export default new Vuex.Store({
     previ: "",
     prevj: "",
     color: "",
-    username: ""
+    username: "",
+    signedin: false
   },
   getters: {
+    getsignedin(state) {
+      return state.signedin;
+    },
     getusername(state) {
       return state.username;
     },
@@ -66,6 +70,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setsignedin(state, payload) {
+      state.signedin = payload;
+    },
     setusername(state, payload) {
       state.username = payload;
     },
