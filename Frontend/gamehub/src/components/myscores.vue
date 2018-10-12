@@ -1,6 +1,5 @@
 <template>
   <div class="trial">
-        {{msg}}
         <table v-bind:id="'table'">
             <tr>
                 <th>Username</th>
@@ -63,6 +62,7 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    margin-top: 100px;
 }
 
 table, tr, td,th{
@@ -70,4 +70,6 @@ table, tr, td,th{
     border-collapse: collapse;
 }
 
+td{height:75px;width:150px;}
+th{height:75px;width:150px;}
 </style>

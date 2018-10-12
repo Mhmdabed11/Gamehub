@@ -168,6 +168,32 @@ display:function(e){
     }
 
 }
+},
+mounted:function(){
+    this.word="";
+this.letter="";
+this.result="";
+this.start=true;
+this.newgame=false;
+this.next=false;
+this.size=0;
+this.arr=[];
+this.guessed=[];
+this.wrongguess="Wrong Guesses so far: ";
+this.timepass=0;
+ totalsize=0;
+ opened=0;
+ guessedletters=[];
+ contains=false;
+ mistakes=0;
+ correct=false;
+ interx;
+ gameover=false;
+ var top=document.getElementsByClassName("res")[0].classList;
+if (top.contains("g"))
+top.remove("g")
+if (top.contains("r"))
+top.remove("r")
 }
 }
 </script>

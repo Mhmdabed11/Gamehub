@@ -202,7 +202,7 @@ check:function(e){
                     this.gameover=true;
                     this.source=require("../assets/win.png");
                     window.clearInterval(inter);
-                    var payload = { username: this.$store.getters.getusername, game: "mine", score: Math.floor(10000/this.timepassed)*difficulty };
+                    var payload = { username: this.$store.getters.getusername, game: "minesweeper", score: Math.floor(10000/this.timepassed)*difficulty };
                     this.$store.commit("saveScore", payload);
                     }
             }else {
@@ -357,6 +357,22 @@ return arr;
 }
 },
 mounted:function(){
+        this.tprow=false;
+    this.over=true;
+    this.df=false;
+    this.smily=false;
+    this.btn=true;
+    window.clearInterval(inter);
+    this.timepassed=0;
+    size=0;
+    this.siz=[];
+    this.gameover=false;
+    gameover=false;
+    firstclk=true;
+    clkcount=0;
+    defuse=false;
+    this.numbomb=0;
+    this.source=require("../assets/sm.png");
 that=this;
 }
 }

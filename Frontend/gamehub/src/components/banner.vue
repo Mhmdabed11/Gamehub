@@ -19,8 +19,8 @@
   <div class="dropdown">
         <button class="data hsbtn"> HighScores 
         <div class="dropdown-content"> 
-            <a class="item"> My HighScores</a> 
-            <a class="item"> All HighScores</a> 
+            <button v-on:click="myhs" class="item hsbtns"> My HighScores</button> 
+            <button v-on:click="allhs" class="item hsbtns"> All HighScores</button> 
         </div>
         </button>
     </div>
@@ -51,6 +51,14 @@ export default {
     };
   },
   methods: {
+      myhs() {
+      this.$router.push("/myscores");
+      this.clickedpic();
+    },
+      allhs() {
+      this.$router.push("/allscores");
+      this.clickedpic();
+    },
     signout() {
       this.$store.commit("setsignedin", false);
       this.$store.commit("setusername", "");
@@ -225,12 +233,19 @@ ul {
 
   margin-top: 20%;
 }
+.hsbtns{background-color: lightblue; /* Green */
+  border: none;
+  color: black;
+  padding: 5px 32px;
+  padding-bottom: 20px;
+  text-align: center;
+  text-decoration: none}
 .dropdown:hover .dropdown-content {
   height: 54px;
 }
 
 .item:hover {
-  height: 18px;
+  height: 30px;
   display: block;
 }
 
