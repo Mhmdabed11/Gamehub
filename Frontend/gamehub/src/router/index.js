@@ -10,8 +10,8 @@ import connect from '@/components/Connect4'
 import memory from '@/components/memorymatch'
 import reversi from '@/components/ReversiGrid'
 import hangman from '@/components/hangman'
-import trial from '@/components/trial'
-import trial3 from '@/components/trial3'
+import myscores from '@/components/myscores'
+import allscores from '@/components/allscores'
 import login from '@/components/login'
 import signup from '@/components/signup'
 import welcome from '@/components/welcome'
@@ -75,14 +75,14 @@ export default new Router({
       component: twenty
     },
     {
-      path: '/trial',
-      name: 'trial',
-      component: trial
+      path: '/myscores',
+      name: 'myscores',
+      component: myscores
     },
     {
-      path: '/trial3',
-      name: 'trail3',
-      component: trial3
+      path: '/allscores',
+      name: 'allscores',
+      component: allscores
     }
   ]
 })
