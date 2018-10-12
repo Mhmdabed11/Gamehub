@@ -44,7 +44,7 @@ export default {
         .then(function(response) {
           console.log(response);
           ref.wrong = true;
-          ref.$router.push("login");
+          ref.$router.push({ name: "login" });
         })
         .catch(function(error) {
           ref.wrong = false;
