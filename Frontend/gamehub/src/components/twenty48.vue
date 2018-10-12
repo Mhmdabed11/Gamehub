@@ -133,9 +133,201 @@ export default {
       this.beginGame();
     },
     finish(){
-      this.totalScore();
-      var payload = { username: this.$store.getters.getusername, game: "twenty48", score: this.score };
-      this.$store.commit("saveScore", payload);
+      // this boolean determines if the game reached a blocked status or not
+      // if it no longer possible to proceed in the game, then you can submit your
+      // score. Otherwise you must continue playing till the end of the game
+      var game_status = true;
+      for(var i=1; i<17; i++){
+        // checking the value of the innerHTML, when a box is empty then it means
+        // the game didn't end yet. there is a place for insertion.
+        // if there is no space, then we will have to consider another condition.
+        // That condition is the possiblity of being able to merge two boxes that are 
+        // adjacent to each other because they have identical numbers
+        //  (adjacent vertically or horrizontaly, diagonally is not allowed) 
+        var htmlstring = document.getElementById("box"+i).innerHTML;
+        htmlstring = (htmlstring.trim) ? htmlstring.trim() : htmlstring.replace(/^\s+/,'');
+        if(htmlstring ==''){
+          // this means a box is empty which means the game status is false (not done)
+          game_status = false;
+          if(!game_status){
+            alert("Must finish before submitting your score!");
+            break;
+          }
+        }
+
+
+        // i%4==1 means that we are grabbing an element of the first column, [1, 5, 9, 13]
+        if(game_status && (i%4)==1){
+          // checking if the element exists or not
+          // it is (i-4) referes to the box that is above (i)
+          if( document.getElementById("box"+(i-4)) ){
+            // we are checking if the box above (i-4) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i-4)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          if( document.getElementById("box"+(i+4)) ){
+            // we are checking if the box above (i+4) matches the box we are in (i)
+            if(parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i+4)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          if( document.getElementById("box"+(i+1)) ){
+            // we are checking if the box to the right (i+1) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i+1)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+
+        // i%4==2 means that we are grabbing an element of the second column, [2, 6, 10, 14]  
+        }else if(game_status && (i%4)==2){
+          // checking if the element exists or not
+          // it is (i-4) referes to the box that is above (i)
+          if( document.getElementById("box"+(i-4)) ){
+            // we are checking if the box above (i-4) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i-4)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          if( document.getElementById("box"+(i+4)) ){
+            // we are checking if the box above (i+4) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i+4)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          if( document.getElementById("box"+(i+1)) ){
+            // we are checking if the box to the right (i+1) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i+1)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          if( document.getElementById("box"+(i-1)) ){
+            // we are checking if the box to the right (i+1) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i-1)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          
+        // i%4==3 means that we are grabbing an element of the third column, [3, 7, 11, 15]
+        }else if(game_status && (i%4)==3){
+          // checking if the element exists or not
+          // it is (i-4) referes to the box that is above (i)
+          if( document.getElementById("box"+(i-4)) ){
+            // we are checking if the box above (i-4) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i-4)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          if( document.getElementById("box"+(i+4)) ){
+            // we are checking if the box above (i+4) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i+4)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          if( document.getElementById("box"+(i+1)) ){
+            // we are checking if the box to the right (i+1) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i+1)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          if( document.getElementById("box"+(i-1)) ){
+            // we are checking if the box to the right (i+1) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i-1)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          
+        // i%4==0 means that we are grabbing an element of the fourth column, [4, 8, 12, 16]
+        }else if(game_status && (i%4)==0){
+          // checking if the element exists or not
+          // it is (i-4) referes to the box that is above (i)
+          if( document.getElementById("box"+(i-4)) ){
+            // we are checking if the box above (i-4) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i-4)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          if( document.getElementById("box"+(i+4)) ){
+            // we are checking if the box above (i+4) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i+4)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+          if( document.getElementById("box"+(i-1)) ){
+            // we are checking if the box to the right (i+1) matches the box we are in (i)
+            if( parseInt(document.getElementById("box"+i).innerHTML) == parseInt(document.getElementById("box"+(i-1)).innerHTML) ){
+              game_status = false;
+              if(!game_status){
+                alert("You have boxes that can be merged");
+                break;
+              }
+            }
+          }
+
+        }
+
+
+      }
+
+      if(game_status){
+        this.totalScore();
+        var payload = { username: this.$store.getters.getusername, game: "twenty48", score: this.score };
+        this.$store.commit("saveScore", payload);
+        alert("score saved!");
+      }
+      
     },
     beginGame(){
       // need to randomly assign two blocks with values that are either 2 or 4
