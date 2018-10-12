@@ -30,7 +30,7 @@ export default {
             var scope = this;
             var xreq = new XMLHttpRequest();
             this.username = "/"+scope.$store.getters.getusername;
-            var url = 'http://127.0.0.1:8888/getScoresByUsername'+username;
+            var url = 'http://127.0.0.1:8888/getScoresByUsername'+this.username;
             xreq.open("GET", url, true);
             xreq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             
