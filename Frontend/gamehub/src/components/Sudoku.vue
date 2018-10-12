@@ -346,7 +346,7 @@ export default {
  	position: absolute;
 	background: -webkit-linear-gradient(to right, #FFAF7B, #D76D77); 
 	background: linear-gradient(to right, #FFAF7B, #D76D77);
-	top: 50%;
+	top: 58%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
@@ -461,7 +461,7 @@ export default {
 		left: 560px;
 	}
 }
-
+/*
 @media only screen and (max-width: 700px) and (min-width: 400px){
 	.boxed {
 		border: 3px solid green ;
@@ -475,79 +475,61 @@ export default {
 		height: 50px;
 	} 
 
-	/* first row */
 	#box11, #box12, #box13, #box14, #box15, #box16, #box17, #box18, #box19{
 		top: 0px;
 	}
-	/* second row */
 	#box21, #box22, #box23, #box24, #box25, #box26, #box27, #box28, #box29{
 		top: 50px;
 	}
-	/* third row*/
 	#box31, #box32, #box33, #box34, #box35, #box36, #box37, #box38, #box39{
 		top: 100px;
 		border-bottom: 3px solid green;
 	}
-	/* fourth row */
 	#box41, #box42, #box43, #box44, #box45, #box46, #box47, #box48, #box49{
 		top: 150px;
 	}
-	/* fifth row */
 	#box51, #box52, #box53, #box54, #box55, #box56, #box57, #box58, #box59{
 		top:200px;
 	}
-	/* sixth row */
 	#box61, #box62, #box63, #box64, #box65, #box66, #box67, #box68, #box69{
 		top: 250px;
 		border-bottom: 3px solid green;
 	}
-	/* seventh row */
 	#box71, #box72, #box73, #box74, #box75, #box76, #box77, #box78, #box79{
 		top: 300px;
 	}
-	/* eighth row */
 	#box81, #box82, #box83, #box84, #box85, #box86, #box87, #box88, #box89{
 		top: 350px;
 	}
-	/* ninth row */
 	#box91, #box92, #box93, #box94, #box95, #box96, #box97, #box98, #box99{
 		top: 400px;
 	}
-	/* first column from left */
 	#box11, #box21, #box31, #box41, #box51, #box61, #box71, #box81, #box91{
 		left: 0px;
 	}
-	/* second column from left */ 
 	#box12, #box22, #box32, #box42, #box52, #box62, #box72, #box82, #box92{
 		left: 50px;
 	}
-	/* third column from left */ 
 	#box13, #box23, #box33, #box43, #box53, #box63, #box73, #box83, #box93{
 		left: 100px;
 		border-right: 3px solid green;
 	}
-	/* fourth column from left */ 
 	#box14, #box24, #box34, #box44, #box54, #box64, #box74, #box84, #box94{
 		left: 150px;
 	}
-	/* fifth column from left */
 	#box15, #box25, #box35, #box45, #box55, #box65, #box75, #box85, #box95{
 		left: 200px;
 	}
-	/* sixth column from left */
 	#box16, #box26, #box36, #box46, #box56, #box66, #box76, #box86, #box96{
 		left: 250px;
 		border-right: 3px solid green;
 	}
-	/* seventh column from left */
 	#box17, #box27, #box37, #box47, #box57, #box67, #box77, #box87, #box97{
 		left: 300px;
 	}
-	/* eight column from left */ 
 	#box18, #box28, #box38, #box48, #box58, #box68, #box78, #box88, #box98{
 		left: 350px;
 	}
-	/* ninth column from left */
 	#box19, #box29, #box39, #box49, #box59, #box69, #box79, #box89, #box99{
 		left: 400px;
 	}
@@ -560,89 +542,70 @@ export default {
 		height: 315px;
 
 	} 
-
 	.innerBoxes{
 		border: 1px solid green ;
 		width: 35px;
 		height: 35px;
 	} 
-
-	/* first row */
 	#box11, #box12, #box13, #box21, #box22, #box23, #box31, #box32, #box33{
 		top: 0px;
 	}
-	/* second row */
 	#box14, #box15, #box16, #box24, #box25, #box26, #box34, #box35, #box36{
 		top: 35px;
 	}
-	/* third row*/
 	#box17, #box18, #box19, #box27, #box28, #box29, #box37, #box38, #box39{
 		top: 70px;
 		border-bottom: 2px solid green;
 	}
-	/* fourth row */
 	#box41, #box42, #box43, #box51, #box52, #box53, #box61, #box62, #box63{
 		top: 105px;
 	}
-	/* fifth row */
 	#box44, #box45, #box46, #box54, #box55, #box56, #box64, #box65, #box66{
 		top:140px;
 	}
-	/* sixth row */
 	#box47, #box48, #box49, #box57, #box58, #box59, #box67, #box68, #box69{
 		top: 175px;
 		border-bottom: 2px solid green;
 	}
-	/* seventh row */
 	#box71, #box72, #box73, #box81, #box82, #box83, #box91, #box92, #box93{
 		top: 210px;
 	}
-	/* eighth row */
 	#box74, #box75, #box76, #box84, #box85, #box86, #box94, #box95, #box96{
 		top: 245px;
 	}
-	/* ninth row */
 	#box77, #box78, #box79, #box87, #box88, #box89, #box97, #box98, #box99{
 		top: 280px;
 	}
-	/* first column from left */
 	#box11, #box14, #box17, #box41, #box44, #box47, #box71, #box74, #box77{
 		left: 0px;
 	}
-	/* second column from left */ 
 	#box12, #box15, #box18, #box42, #box45, #box48, #box72, #box75, #box78{
 		left: 35px;
 	}
-	/* third column from left */ 
 	#box13, #box16, #box19, #box43, #box46, #box49, #box73, #box76, #box79{
 		left: 70px;
 		border-right: 2px solid green;
 	}
-	/* fourth column from left */ 
 	#box21, #box24, #box27, #box51, #box54, #box57, #box81, #box84, #box87{
 		left: 105px;
 	}
-	/* fifth column from left */
 	#box22, #box25, #box28, #box52, #box55, #box58, #box82, #box85, #box88{
 		left: 140px;
 	}
-	/* sixth column from left */
 	#box23, #box26, #box29, #box53, #box56, #box59, #box83, #box86, #box89{
 		left: 175px;
 		border-right: 2px solid green;
 	}
-	/* seventh column from left */
 	#box31, #box34, #box37, #box61, #box64, #box67, #box91, #box94, #box97{
 		left: 210px;
 	}
-	/* eight column from left */ 
 	#box32, #box35, #box38, #box62, #box65, #box68, #box92, #box95, #box98{
 		left: 245px;
 	}
-	/* ninth column from left */
 	#box33, #box36, #box39, #box63, #box66, #box69, #box93, #box96, #box99{
 		left: 280px;
 	}
 }
+*/
 .boxed{margin-top:250px;margin-bottom:20px;}
 </style>

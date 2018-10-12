@@ -635,7 +635,7 @@ export default {
       background-color: #aa0000;
     }
   }
-
+/*
   @media only screen and (max-width: 700px) and (min-width: 400px){
     .boxed {
       border: 1px solid green ;
@@ -690,4 +690,5 @@ export default {
 
     } 
   }
+  */
 </style>
