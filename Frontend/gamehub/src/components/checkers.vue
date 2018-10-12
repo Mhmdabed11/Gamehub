@@ -1,5 +1,6 @@
 <template>
 <div id="wrapper">
+  <button v-on:click="newgame">New Game</button>
   <h1 >{{msg}}'s Turn</h1>
     <div class="grid">
         <div class="grid-items" v-for="i in 64"  v-on:click="alertme($event,Math.floor((i-1)/8),(i-1)-(8*(Math.floor((i-1)/8))))" v-bind:key=i><div  :class="{unit: isactive}"></div></div>
@@ -11,7 +12,7 @@
 export default {
   data() {
     return {
-      matrix: "",
+      matrix: [],
       isactive: true,
       color1: "red",
       color2: "black",
@@ -604,6 +605,70 @@ export default {
         }
       }
     },
+    newgame() {
+      {
+        for (let i = 0; i < 8; i++) {
+          for (let j = 0; j < 8; j++) {
+            if (this.matrix[i] && this.matrix[i][j]) {
+              this.matrix[i][j].children[0].classList.remove("red");
+              this.matrix[i][j].children[0].classList.remove("black");
+              this.matrix[i][j].children[0].classList.remove("damared");
+              this.matrix[i][j].children[0].classList.remove("damablack");
+            }
+          }
+        }
+        var divarray = document.getElementsByClassName("grid-items");
+        this.matrix = new Array();
+        for (let i = 0; i < 8; i++) {
+          var itr = 8 * i;
+          var range = itr + 8;
+          var columnarray = new Array();
+          for (let j = 8 * i; j < 8 * i + 8; j++) {
+            columnarray.push(divarray[j]);
+          }
+          this.matrix.push(columnarray);
+        }
+        for (let i = 0; i < 3; i++) {
+          if (i % 2 == 0) {
+            for (let j = 1; j < 8; j++) {
+              this.matrix[i][j].children[0].classList.add("black");
+              j++;
+            }
+          } else {
+            for (let j = 0; j < 8; j++) {
+              this.matrix[i][j].children[0].classList.add("black");
+              j++;
+            }
+          }
+        }
+        for (let i = 5; i < 8; i++) {
+          if (i % 2 == 0) {
+            for (let j = 1; j < 8; j++) {
+              this.matrix[i][j].children[0].classList.add("red");
+              j++;
+            }
+          } else {
+            for (let j = 0; j < 8; j++) {
+              this.matrix[i][j].children[0].classList.add("red");
+              j++;
+            }
+          }
+        }
+        for (let i = 0; i < 8; i++) {
+          if (i % 2 == 0) {
+            for (let j = 0; j < 8; j++) {
+              if (j % 2 == 0) this.matrix[i][j].classList.add("one");
+              else this.matrix[i][j].classList.add("two");
+            }
+          } else if (i % 2 != 0) {
+            for (let j = 0; j < 8; j++) {
+              if (j % 2 == 0) this.matrix[i][j].classList.add("two");
+              else this.matrix[i][j].classList.add("one");
+            }
+          }
+        }
+      }
+    },
     checkdownrightby4dama(itr, itr3, color, eaten, damacolor) {
       if (this.matrix[itr + 4] && this.matrix[itr + 4][itr3 + 4]) {
         if (
@@ -1190,59 +1255,7 @@ export default {
     }
   },
   mounted: function() {
-    this.$nextTick(function() {
-      var divarray = document.getElementsByClassName("grid-items");
-      this.matrix = new Array();
-
-      for (let i = 0; i < 8; i++) {
-        var itr = 8 * i;
-        var range = itr + 8;
-        var columnarray = new Array();
-        for (let j = 8 * i; j < 8 * i + 8; j++) {
-          columnarray.push(divarray[j]);
-        }
-        this.matrix.push(columnarray);
-      }
-      for (let i = 0; i < 3; i++) {
-        if (i % 2 == 0) {
-          for (let j = 1; j < 8; j++) {
-            this.matrix[i][j].children[0].classList.add("black");
-            j++;
-          }
-        } else {
-          for (let j = 0; j < 8; j++) {
-            this.matrix[i][j].children[0].classList.add("black");
-            j++;
-          }
-        }
-      }
-      for (let i = 5; i < 8; i++) {
-        if (i % 2 == 0) {
-          for (let j = 1; j < 8; j++) {
-            this.matrix[i][j].children[0].classList.add("red");
-            j++;
-          }
-        } else {
-          for (let j = 0; j < 8; j++) {
-            this.matrix[i][j].children[0].classList.add("red");
-            j++;
-          }
-        }
-      }
-      for (let i = 0; i < 8; i++) {
-        if (i % 2 == 0) {
-          for (let j = 0; j < 8; j++) {
-            if (j % 2 == 0) this.matrix[i][j].classList.add("one");
-            else this.matrix[i][j].classList.add("two");
-          }
-        } else if (i % 2 != 0) {
-          for (let j = 0; j < 8; j++) {
-            if (j % 2 == 0) this.matrix[i][j].classList.add("two");
-            else this.matrix[i][j].classList.add("one");
-          }
-        }
-      }
-    });
+    this.$nextTick(this.newgame);
   }
 };
 </script>
