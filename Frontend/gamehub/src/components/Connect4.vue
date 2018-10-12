@@ -6,7 +6,7 @@
       <span v-bind:id="color" class="win">{{color}} wins</span>
       <span>{{timer}} </span>
         <div class="grid-container">
-            <div v-for="n in 7" class="grid-item"> <button @click="Insert" v-bind:id="n-1" class="insert">Insert Here</button></div>
+            <div v-for="n in 7" class="grid-item"> <button @click="Insert($event)" v-bind:id="n-1" class="insert">Insert Here</button></div>
             <div v-for="n in 42" class="grid-item dot"></div>
         </div>
   </div>
@@ -24,8 +24,9 @@ export default {
     };
   },
   methods: {
-    Insert() {
-      var x = event.target;
+    Insert(e) {
+      var e = window.e || e;
+      var x = e.target || e.srcElement;
       var y = this;
       for (var i = 35; i > -1; i = i - 7) {
         if (
