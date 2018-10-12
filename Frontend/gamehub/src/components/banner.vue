@@ -13,8 +13,10 @@
     <div v-bind:class="{active:!this.$store.getters.getsignedin}" class="pic"> <img :src= 'imagee[7]' class="img" v-on:click="sudoku()" />  <br><a class="a" id="sudoku"> Sudoku </a> </div>
   
      <div class="datawrapper">
+       
         
     <div class="username">{{this.$store.getters.getusername}} </div>
+      <!-- <div class="username">{{this.$cookie.get("username")}} </div> -->
     <div> <button class="btnsignout" v-on:click="signout"> Signout </button> </div>
   <div class="dropdown">
         <button class="data hsbtn"> HighScores 
@@ -27,7 +29,6 @@
   
     </div>
 
-     
 
     
    </div> 
