@@ -175,3 +175,13 @@ Apache CouchDB has started. Time to relax.
 [info] [<0.565.0>] Starting index update for db: gamehub-db idx: _design/users
 [info] [<0.565.0>] Index update finished for db: gamehub-db idx: _design/users
 [info] [<0.559.0>] 127.0.0.1 - - GET /gamehub-db/_design/users/_view/getByUsername?key=%22Mohammad%22&include_docs=true 200
+
+Apache CouchDB 1.7.1 (LogLevel=info) is starting.
+Apache CouchDB has started. Time to relax.
+[info] [<0.56.0>] Apache CouchDB has started on http://127.0.0.1:5984/
+[info] [<0.196.0>] Opening index for db: gamehub-db idx: _design/users sig: "ddd444256ad44968301681fa48367436"
+[info] [<0.200.0>] Starting index update for db: gamehub-db idx: _design/users
+[info] [<0.200.0>] Index update finished for db: gamehub-db idx: _design/users
+[info] [<0.132.0>] 127.0.0.1 - - GET /gamehub-db/_design/users/_view/getByUsername?key=%22karimkov%22&include_docs=true 200
+[info] [<0.135.0>] 127.0.0.1 - - GET /gamehub-db/_design/users/_view/getByUsername?key=%22karimkov%22&include_docs=true 200
+[info] [<0.259.0>] 127.0.0.1 - - GET /gamehub-db/_design/users/_view/getByUsername?key=%22karimkov%22&include_docs=true 200
