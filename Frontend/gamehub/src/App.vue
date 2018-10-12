@@ -16,6 +16,10 @@ export default {
 </script>
 
 <style>
+body {
+  min-width: 1000px;
+  min-height: 1000px;
+}
 #app {
   display: flex;
   flex-direction: column;

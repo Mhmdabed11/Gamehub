@@ -47,6 +47,7 @@ export default {
         .then(function(response) {
           if (response.status == 200) {
             ref.$store.commit("setusername", ref.username);
+            ref.$store.commit("setsignedin", true);
             ref.$router.push({ name: "checkers" });
           }
         })
