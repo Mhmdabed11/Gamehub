@@ -21,7 +21,7 @@ export default {
     return {
     	msg: 'Welcome to YOUR DEATH',
         game_scores: '',
-        username: 'SooSoo',
+        username: '',
 
     }
   },
@@ -29,7 +29,7 @@ export default {
       retrieveScoresByUsername(){
             var scope = this;
             var xreq = new XMLHttpRequest();
-            var username = "/"+scope.$store.getters.getusername;
+            this.username = "/"+scope.$store.getters.getusername;
             var url = 'http://127.0.0.1:8888/getScoresByUsername'+username;
             xreq.open("GET", url, true);
             xreq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
