@@ -20,8 +20,8 @@
   <div class="dropdown">
         <button class="data hsbtn"> HighScores 
         <div class="dropdown-content"> 
-            <button v-on:click="myhs" class="item hsbtns"> My HighScores</button> 
-            <button v-on:click="allhs" class="item hsbtns"> All HighScores</button> 
+            <button type="button" v-on:click="myhs" class="item hsbtns"> My HighScores</button> 
+            <button type="button" v-on:click="allhs" class="item hsbtns"> All HighScores</button> 
         </div>
         </button>
     </div>
