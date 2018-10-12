@@ -10,7 +10,7 @@
                 <p v-bind:class="{err:true, errshow:wrong}">User Already Exists</p>
                 <a class="terms">Terms and Conditions of Use</a>
                 <br>
-                <a href="#/login">Log in</a>
+                <a href="#/">Log in</a>
            
         </div>
     </div>

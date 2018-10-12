@@ -16,7 +16,6 @@
        
         
     <div class="username">{{this.$store.getters.getusername}} </div>
-      <!-- <div class="username">{{this.$cookie.get("username")}} </div> -->
     <div> <button class="btnsignout" v-on:click="signout"> Signout </button> </div>
   <div class="dropdown">
         <button class="data hsbtn"> HighScores 
@@ -52,11 +51,11 @@ export default {
     };
   },
   methods: {
-      myhs() {
+    myhs() {
       this.$router.push("/myscores");
       this.clickedpic();
     },
-      allhs() {
+    allhs() {
       this.$router.push("/allscores");
       this.clickedpic();
     },
@@ -234,13 +233,15 @@ ul {
 
   margin-top: 20%;
 }
-.hsbtns{background-color: lightblue; /* Green */
+.hsbtns {
+  background-color: lightblue; /* Green */
   border: none;
   color: black;
   padding: 5px 32px;
   padding-bottom: 20px;
   text-align: center;
-  text-decoration: none}
+  text-decoration: none;
+}
 .dropdown:hover .dropdown-content {
   height: 54px;
 }

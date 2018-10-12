@@ -225,3 +225,81 @@ Apache CouchDB has started. Time to relax.
 [info] [<0.140.0>] 127.0.0.1 - - GET /gamehub-db/_design/users/_view/getByUsername?key=%22karimkov%22&include_docs=true 200
 [info] [<0.2442.0>] 127.0.0.1 - - GET /gamehub-db/_design/users/_view/getByUsername?key=%22karimkov%22&include_docs=true 200
 [info] [<0.129.0>] 127.0.0.1 - - POST /gamehub-db 201
+[info] [<0.200.0>] Starting index update for db: gamehub-db idx: _design/users
+[info] [<0.200.0>] Index update finished for db: gamehub-db idx: _design/users
+[info] [<0.184.0>] 127.0.0.1 - - GET /gamehub-db/_design/users/_view/getByUsername?key=%22karimkov%22&include_docs=true 200
+[info] [<0.2485.0>] 127.0.0.1 - - POST /gamehub-db 201
+[info] [<0.200.0>] Starting index update for db: gamehub-db idx: _design/users
+[info] [<0.200.0>] Index update finished for db: gamehub-db idx: _design/users
+[info] [<0.5246.0>] 127.0.0.1 - - GET /gamehub-db/_design/users/_view/getByUsername?key=%22karimkov%22&include_docs=true 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /gamehub-db/_all_docs?startkey=%22_design%2F%22&endkey=%22_design0%22&include_docs=true 200
+[info] [<0.136.0>] 127.0.0.1 - - GET /_config/query_servers/ 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /gamehub-db/_all_docs?limit=11 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_session 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET / 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_config/native_query_servers/ 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_utils/database.html?gamehub-db 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_utils/style/layout.css 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_utils/script/json2.js 200
+[info] [<0.136.0>] 127.0.0.1 - - GET /_utils/script/sha1.js 200
+[info] [<0.137.0>] 127.0.0.1 - - GET /_utils/script/jquery.js 200
+[info] [<0.138.0>] 127.0.0.1 - - GET /_utils/script/jquery.dialog.js 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_utils/script/futon.js 200
+[info] [<0.128.0>] 127.0.0.1 - - GET /_utils/script/jquery.couch.js 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_utils/script/jquery.resizer.js 200
+[info] [<0.136.0>] 127.0.0.1 - - GET /_utils/script/jquery.suggest.js 200
+[info] [<0.137.0>] 127.0.0.1 - - GET /_utils/script/futon.browse.js 200
+[info] [<0.138.0>] 127.0.0.1 - - GET /_utils/script/futon.format.js 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_utils/image/bg.png 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_utils/image/path.gif 200
+[info] [<0.136.0>] 127.0.0.1 - - GET /_utils/image/add.png 200
+[info] [<0.137.0>] 127.0.0.1 - - GET /_utils/image/compact.png 200
+[info] [<0.128.0>] 127.0.0.1 - - GET /_utils/image/key.png 200
+[info] [<0.138.0>] 127.0.0.1 - - GET /_utils/image/delete.png 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_utils/image/thead-key.gif 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_utils/image/order-asc.gif 200
+[info] [<0.136.0>] 127.0.0.1 - - GET /_utils/image/thead.gif 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_utils/_sidebar.html 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /gamehub-db/_all_docs?startkey=%22_design%2F%22&endkey=%22_design0%22&include_docs=true 304
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_utils/image/spinner_33.gif 200
+[info] [<0.136.0>] 127.0.0.1 - - GET /_utils/image/rarrow.png 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /gamehub-db/_all_docs?limit=11 304
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_config/query_servers/ 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_utils/image/logo.png 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_utils/image/sidebar-toggle.png 200
+[info] [<0.136.0>] 127.0.0.1 - - GET /_session 200
+[info] [<0.137.0>] 127.0.0.1 - - GET / 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_config/native_query_servers/ 200
+[info] [<0.5719.0>] 127.0.0.1 - - GET /gamehub-db/_design/users/_view/getByUsername?key=%22karimkov%22&include_docs=true 200
+[info] [<0.6152.0>] Opening index for db: gamehub-db idx: _design/scores sig: "fa51af898b3b8921a30d629392fe55cb"
+[info] [<0.6156.0>] Starting index update for db: gamehub-db idx: _design/scores
+[info] [<0.6156.0>] Index update finished for db: gamehub-db idx: _design/scores
+[info] [<0.6129.0>] 127.0.0.1 - - GET /gamehub-db/_design/scores/_view/getByUsername?key=%22karimkov%22 200
+[info] [<0.6102.0>] 127.0.0.1 - - GET /gamehub-db/_design/scores/_view/getByGame?group=true 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_utils/image/progress.gif 200
+[info] [<0.5909.0>] 127.0.0.1 - - GET /_utils/dialog/_delete_database.html 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_utils/image/spinner_6b.gif 200
+[info] [<0.6152.0>] Index shutdown by monitor notice for db: gamehub-db idx: _design/scores
+[info] [<0.196.0>] Index shutdown by monitor notice for db: gamehub-db idx: _design/users
+[info] [<0.196.0>] Closing index for db: gamehub-db idx: _design/users sig: "ddd444256ad44968301681fa48367436"
+reason: normal
+[info] [<0.6152.0>] Closing index for db: gamehub-db idx: _design/scores sig: "fa51af898b3b8921a30d629392fe55cb"
+reason: normal
+[info] [<0.2547.0>] 127.0.0.1 - - DELETE /gamehub-db/ 200
+[info] [<0.136.0>] 127.0.0.1 - - GET /_session 200
+[info] [<0.136.0>] 127.0.0.1 - - GET / 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_all_dbs 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_replicator/ 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /_users/ 200
+[info] [<0.136.0>] 127.0.0.1 - - GET /bigbang/ 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /bigbangroute/ 200
+[info] [<0.137.0>] 127.0.0.1 - - GET /booking/ 200
+[info] [<0.2547.0>] 127.0.0.1 - - GET /namesdb/ 200
+[info] [<0.136.0>] 127.0.0.1 - - GET /project/ 200
+[info] [<0.6150.0>] 127.0.0.1 - - PUT /gamehub-db 201
+[info] [<0.130.0>] 127.0.0.1 - - POST /gamehub-db 201
+[info] [<0.127.0>] 127.0.0.1 - - POST /gamehub-db 201
+[info] [<0.6255.0>] Opening index for db: gamehub-db idx: _design/scores sig: "bae38bba2e9b03b53ffc53e6842b18dc"
+[info] [<0.6260.0>] Starting index update for db: gamehub-db idx: _design/scores
+[info] [<0.5199.0>] 127.0.0.1 - - GET /gamehub-db/_design/scores/_view/getByGame?group=true 200
+[info] [<0.6260.0>] Index update finished for db: gamehub-db idx: _design/scores
