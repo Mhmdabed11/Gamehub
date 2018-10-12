@@ -18,7 +18,7 @@
 export default {
   data () {
     return {
-    	msg: 'Welcome to 2048',
+    	msg: 'Welcome to 2048, Click Finish to See Your Score Once Done',
       values: [2, 4],
       score: 0,
 
@@ -123,6 +123,8 @@ export default {
       }
     },
     newGame(){
+      // putting all the classes that have the background color in an array to check later if the
+      // element we retrieved has one of those classes, so we delete it  
       let classes = ["num2048", "num10248", "num512", "num256", "num128", "num64", "num32", "num16", "num8", "num4", "num2", "num"];
       for(var i=1; i<17; i++){
         document.getElementById("box"+i).innerHTML="";
@@ -170,6 +172,11 @@ export default {
 
     },
     totalScore(){
+      /* I tried to call this function each time an arrow is pressed
+        for some weird reason the function is undefined inside the window.addEventListener().
+        I wanted to call totalScore inside the event listener because by that it will be updating
+        the score on the spot.
+       */
       this.score = 0;
       for(var i=1; i<17; i++){
         var htmlstring = document.getElementById("box"+i).innerHTML;
