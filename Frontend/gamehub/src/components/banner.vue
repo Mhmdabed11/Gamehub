@@ -235,7 +235,7 @@ ul {
 }
 
 .username {
-  margin-left: 40%;
+  margin-left: 50%;
   background-color: black;
   color: white;
 }
