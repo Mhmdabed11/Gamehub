@@ -1,14 +1,14 @@
 {
-   "_id": "_design/scores",
-   "language": "javascript",
-   "views": {
-       "getByUsername": {
-           "map": "function(doc) {\n  if(doc.type == 'score'){\n    emit(doc.username, [doc.game, doc.score])\n  }\n}",
-           "reduce": "function(keys, values, rereduce) {\n  var temp = {};\n  for(i in values){\n    var game = values[i][0];\n    var score = values[i][1];\n    if(temp[game]){\n      if(parseInt(temp[game]) < parseInt(score)){\n        temp[game] = score;\n      }\n    } else {\n      temp[game] = score;\n    }\n  }\n  return temp;\n}"
-       },
-       "getByGame": {
-           "map": "function(doc) {\n  if(doc.type == 'score'){\n    emit(doc.game, [parseInt(doc.score) ,doc.username])\n  }\n}",
-           "reduce": "function(keys, values, rereduce) {\n  for(i in values){\n    \n  }\n  return values.sort(function(a, b) {\n    if (a[0] < b[0]) return -1;\n    if (a[0] > b[0]) return 1;\n    return 0;\n  }).reverse()\n}"
-       }
-   }
-}
+    "_id": "_design/scores",
+    "language": "javascript",
+    "views": {
+        "getByUsername": {
+            "map": "function(doc) {\n  if(doc.type == 'score'){\n    emit(doc.username, [doc.game, doc.score])\n  }\n}",
+            "reduce": "function(keys, values, rereduce) {\n  var temp = {};\n  for(i in values){\n    var game = values[i][0];\n    var score = values[i][1];\n    if(temp[game]){\n      if(parseInt(temp[game]) < parseInt(score)){\n        temp[game] = score;\n      }\n    } else {\n      temp[game] = score;\n    }\n  }\n  return temp;\n}"
+        },
+        "getByGame": {
+            "map": "function(doc) {\n  if(doc.type == 'score'){\n    emit(doc.game, [parseInt(doc.score) ,doc.username])\n  }\n}",
+            "reduce": "function(keys, values, rereduce) {\n  var valueArray = values.sort(function(a, b) {\n    if (a[0] < b[0]) return -1;\n    if (a[0] > b[0]) return 1;\n    return 0;\n  }).reverse();\n  \n  if(valueArray.length < 5){\n    return valueArray;\n  } else {\n    var tempArray = [];\n    for(var i=0; i<5;i++){\n      tempArray.push(valueArray[i]);\n    }\n    return tempArray;\n  } \n}"
+        }
+    }
+ }
