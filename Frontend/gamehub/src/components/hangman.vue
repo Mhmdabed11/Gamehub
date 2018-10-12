@@ -98,6 +98,7 @@ top.remove("r")
             var that=this;
             this.start=false;
             this.next=true;
+            this.word=this.word.toLowerCase();
             for (var i=-1;i<this.word.length;i++){
                 this.arr.push(this.word[i]);
                 this.guessed.push("");
@@ -137,6 +138,8 @@ top.remove("r")
                         gameover=true;
                         window.clearInterval(interx);
                         document.getElementsByClassName("res")[0].classList.add("g");
+                        var payload = { username: this.$store.getters.getusername, game: "hangman", score: Math.floor(10000/this.timepass) };
+                        this.$store.commit("saveScore", payload);
                         this.newgame=true;
                     }
                 }else{

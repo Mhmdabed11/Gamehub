@@ -32,110 +32,108 @@
 </template>
 
  <script>
- export default {
+export default {
   data() {
-  return{
+    return {
       imagee: [
-        require('@/assets/2048.png'),
-        require('@/assets/hangman.png'),
-        require('@/assets/checkers.jpeg'),
-        require('@/assets/connect4.jpeg'),
-        require('@/assets/logo.png'),
-        require('@/assets/minesweeper.png'),
-        require('@/assets/reversi.jpeg'),
-        require('@/assets/sudoku.jpeg')
+        require("@/assets/2048.png"),
+        require("@/assets/hangman.png"),
+        require("@/assets/checkers.jpeg"),
+        require("@/assets/connect4.jpeg"),
+        require("@/assets/logo.png"),
+        require("@/assets/minesweeper.png"),
+        require("@/assets/reversi.jpeg"),
+        require("@/assets/sudoku.jpeg")
       ]
-        }
-},
-methods:{
-    clickedpic: function(){
-    var pic = document.getElementsByClassName("a");
-    for(var i=0;i<this.imagee.length;i++)
-    if(pic[i].classList.contains("clicked"))
-    pic[i].classList.remove("clicked")
+    };
+  },
+  methods: {
+    clickedpic: function() {
+      var pic = document.getElementsByClassName("a");
+      for (var i = 0; i < this.imagee.length; i++)
+        if (pic[i].classList.contains("clicked"))
+          pic[i].classList.remove("clicked");
     },
-    twozero:function(){
-    this.$router.push("/twenty48")
-    var a = document.getElementById("2048");
-    this.clickedpic();
-    a.classList.add("clicked");
+    twozero: function() {
+      this.$router.push("/twenty48");
+      var a = document.getElementById("2048");
+      this.clickedpic();
+      a.classList.add("clicked");
     },
-    hangman:function(){
-    this.$router.push("/hangman")
-    var a = document.getElementById("hangman");
-    this.clickedpic();
-    a.classList.add("clicked");
-
+    hangman: function() {
+      this.$router.push("/hangman");
+      var a = document.getElementById("hangman");
+      this.clickedpic();
+      a.classList.add("clicked");
     },
-     reversi:function(){
-    this.$router.push("/reversi")
-    var a = document.getElementById("reversi");
-    this.clickedpic();
-    a.classList.add("clicked");
-
+    reversi: function() {
+      this.$router.push("/reversi");
+      var a = document.getElementById("reversi");
+      this.clickedpic();
+      a.classList.add("clicked");
     },
-     memory:function(){
-    this.$router.push("/memory")
-    var a = document.getElementById("memory");
-    this.clickedpic();
-    a.classList.add("clicked");
-
+    memory: function() {
+      this.$router.push("/memory");
+      var a = document.getElementById("memory");
+      this.clickedpic();
+      a.classList.add("clicked");
     },
-     checkers:function(){
-    this.$router.push("/checkers")
-    var a = document.getElementById("checkers");
-    this.clickedpic();
-    a.classList.add("clicked");
-
+    checkers: function() {
+      this.$router.push("/checkers");
+      var a = document.getElementById("checkers");
+      this.clickedpic();
+      a.classList.add("clicked");
     },
-     puzzle:function(){
-    this.$router.push("/puzzleslider")
-    // var a = document.getElementById("puzzle");
-    // this.clickedpic();
-    // a.classList.add("clicked");
-
+    puzzle: function() {
+      this.$router.push("/puzzleslider");
+      // var a = document.getElementById("puzzle");
+      // this.clickedpic();
+      // a.classList.add("clicked");
     },
-     sudoku:function(){
-    this.$router.push("/sudoku")
-    var a = document.getElementById("sudoku");
-    this.clickedpic();
-    a.classList.add("clicked");
-
+    sudoku: function() {
+      this.$router.push("/sudoku");
+      var a = document.getElementById("sudoku");
+      this.clickedpic();
+      a.classList.add("clicked");
     },
-     connect:function(){
-    this.$router.push("/connect4")
-    var a = document.getElementById("connect");
-    this.clickedpic();
-    a.classList.add("clicked");
-
+    connect: function() {
+      this.$router.push("/connect4");
+      var a = document.getElementById("connect");
+      this.clickedpic();
+      a.classList.add("clicked");
     },
-     mines:function(){
-    this.$router.push("/minesweeper")
-    var a = document.getElementById("mine");
-    this.clickedpic();
-    a.classList.add("clicked");
-
-    },
-
-}
-}
+    mines: function() {
+      this.$router.push("/minesweeper");
+      var a = document.getElementById("mine");
+      this.clickedpic();
+      a.classList.add("clicked");
+    }
+  }
+};
 </script>
 
 <style scoped>
-.menu{
-    position: relative;
-    top: -50px;
+.menu {
+  position: relative;
+  top: -50px;
 }
-.clicked{
-    color:red;
+.clicked {
+  color: red;
 }
-.pic:hover{
-    cursor:pointer;
-
+.pic:hover {
+  cursor: pointer;
+}
+.img {
+  width: 90px;
+  height: 90px;
+  display: inline-block;
 }
 .img{width:90px;height:90px; display:inline-block;}
 .pic{
     display: inline-block;
+}
+div {
+  display: inline-block;
 }
 .dropbtn {
     height: 25px;
@@ -152,7 +150,7 @@ methods:{
 .user{
     position: absolute;
     top: 0;
-    right: 220px;}
+    right: 43px;}
 ul {
   list-style: none;
 }
@@ -163,12 +161,13 @@ ul {
 
 .dropdown-content {
     height: 0px;
+    right:0;
     top: -3px;
     position: absolute;
     background-color: #f1f1f1;
     width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    transition: all 2s;
+    transition: all 1s;
 
 }
 
@@ -176,7 +175,7 @@ ul {
     height: 0px;
     display: none;
     /* overflow: hidden; */
-    transition: all 2s;
+    transition: all 1s;
 }
     
 .dropdown-content .item:hover {

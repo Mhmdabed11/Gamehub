@@ -34,7 +34,8 @@
  var size;
  var that;
  var inter;
-
+ var scr=0;
+ var difficulty=0;
 export default {
 
 
@@ -133,6 +134,7 @@ easy:function(){
     this.btn2=true;
     this.cntr=4;
     this.side=2;
+    difficulty=1;
 
 },
 medium:function(){
@@ -144,7 +146,7 @@ medium:function(){
     this.btn2=true;
     this.cntr=8;
     this.side=4;
-
+    difficulty=3;
     
 },
 hard:function(){
@@ -156,6 +158,7 @@ hard:function(){
         this.btn2=true;
         this.cntr=16;
         this.side=4;
+        difficulty=6;
 
 },
 check:function(e){
@@ -199,6 +202,8 @@ check:function(e){
                     this.gameover=true;
                     this.source=require("../assets/win.png");
                     window.clearInterval(inter);
+                    var payload = { username: this.$store.getters.getusername, game: "mine", score: Math.floor(10000/this.timepassed)*difficulty };
+                    this.$store.commit("saveScore", payload);
                     }
             }else {
                 var bombs=document.getElementsByClassName("bomb");
