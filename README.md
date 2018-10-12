@@ -14,4 +14,4 @@ Clone the repository or download the files directly.<br>
 	5.Go to gamehub project ==><code>cd gamehub</code><br>
 	6.Run ==> <code>npm install</code>	 to download dependencies.<br>
 	7.Run ==><code> npm run dev </code>to start the project in developer's mode<br>
-	8. Open browser and go to localhost:8080/#/<br>
+	8. Open browser and go to <code>http://localhost:8080/#/</code><br>
