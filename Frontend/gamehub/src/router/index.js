@@ -14,6 +14,7 @@ import trial from '@/components/trial'
 import trial3 from '@/components/trial3'
 import login from '@/components/login'
 import signup from '@/components/signup'
+import welcome from '@/components/welcome'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/welcome',
+      name: 'welcome',
+      component: welcome
     },
     {
       path: '/signup',

@@ -3,9 +3,9 @@
         <div class="login">
             
                 <label for="username">Username</label><br>
-                <input type="text" v-model="username" name="username" placeholder="ex. Jon Doe" required> <br>
+                <input type="text" v-model="username" name="username" placeholder="ex. Jon Doe" > <br>
                 <label for="password">Password</label><br>
-                <input type="password" v-model="password" name="password" required>
+                <input type="password" v-model="password" name="password" >
                 <button class="btnlogin" v-on:click='signin' type="submit">Log in </button>
                 <p v-bind:class="{err:true, errshow:wrong}">Invalid Username or Password</p>
                 <p>Don't have an account?</p>
@@ -48,7 +48,7 @@ export default {
           if (response.status == 200) {
             ref.$store.commit("setusername", ref.username);
             ref.$store.commit("setsignedin", true);
-            ref.$router.push({ name: "checkers" });
+            ref.$router.push({ name: "welcome" });
           }
         })
         .catch(function(error) {
